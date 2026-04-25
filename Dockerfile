@@ -13,7 +13,7 @@ RUN apt-get update && apt-get install -y \
 COPY package*.json ./
 
 # Usamos 'npm ci' para una instalación exacta y limpia basada en el lockfile
-RUN npm ci
+RUN npm install --legacy-peer-deps
 
 # Copiamos el resto del código
 COPY . .
