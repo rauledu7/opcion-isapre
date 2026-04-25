@@ -1,18 +1,17 @@
 FROM node:22-slim AS build
 WORKDIR /app
 
-# Herramientas necesarias para compilar módulos si hiciera falta
 RUN apt-get update && apt-get install -y python3 make g++ && rm -rf /var/lib/apt/lists/*
 
 COPY package*.json ./
 
-# Forzamos la instalación limpia ignorando los llantos de peer-dependencies
+# Instalamos todo incluyendo el plugin de postcss necesario para v4
 RUN npm install --legacy-peer-deps
 
 COPY . .
 
-# Desactivamos telemetría para que el log sea más limpio
-ENV ASTRO_TELEMETRY_DISABLED=1
+# IMPORTANTE: Para Tailwind v4 a veces es necesario que este env esté presente
+ENV NODE_ENV=production
 RUN npm run build
 
 FROM node:22-slim AS runtime
