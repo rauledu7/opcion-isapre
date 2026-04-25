@@ -1,13 +1,16 @@
-// @ts-check
 import { defineConfig } from 'astro/config';
-import tailwindcss from '@tailwindcss/vite';
+import tailwind from '@astrojs/tailwind';
 import keystatic from '@keystatic/astro';
-import react from '@astrojs/react';
+import node from '@astrojs/node'; // 1. Importar el adaptador
 
-// https://astro.build/config
 export default defineConfig({
-  integrations: [react(), keystatic()],
-  vite: {
-    plugins: [tailwindcss()],
-  },
+  // 2. Cambiar el output a 'hybrid' 
+  // (La landing será estática, Keystatic será dinámico)
+  output: 'hybrid', 
+  
+  adapter: node({
+    mode: 'standalone',
+  }),
+  
+  integrations: [tailwind(), keystatic()],
 });

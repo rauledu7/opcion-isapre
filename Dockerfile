@@ -1,37 +1,28 @@
-# Etapa 1: Construcción (Build)
+# Etapa 1: Construcción
 FROM node:22-slim AS build
 WORKDIR /app
 
-# Instalamos dependencias mínimas del sistema para compilar módulos nativos
-RUN apt-get update && apt-get install -y \
-    python3 \
-    make \
-    g++ \
-    && rm -rf /var/lib/apt/lists/*
+RUN apt-get update && apt-get install -y python3 make g++ && rm -rf /var/lib/apt/lists/*
 
-# Copiamos archivos de dependencias
 COPY package*.json ./
 
-# Usamos 'npm ci' para una instalación exacta y limpia basada en el lockfile
+# Instalamos con el flag para ignorar conflictos de versiones
 RUN npm install --legacy-peer-deps
 
-# Copiamos el resto del código
 COPY . .
-
-# Construimos el sitio para producción
 RUN npm run build
 
 # Etapa 2: Ejecución (Runtime)
 FROM node:22-slim AS runtime
 WORKDIR /app
 
-# Instalamos un servidor estático ligero
-RUN npm install -g serve
-
-# Copiamos la carpeta de salida desde la etapa de construcción
+# Copiamos la carpeta dist que ahora contiene el servidor generado por Astro
 COPY --from=build /app/dist ./dist
 
-# Cloud Run requiere que el contenedor escuche en el puerto definido por $PORT
-# 'serve' usa el flag -l para especificar el puerto
+# Variables para Cloud Run
+ENV HOST=0.0.0.0
+ENV PORT=8080
 EXPOSE 8080
-CMD serve -s dist -l $PORT
+
+# El entry point correcto para el adaptador de Node de Astro
+CMD ["node", "./dist/server/entry.mjs"]
