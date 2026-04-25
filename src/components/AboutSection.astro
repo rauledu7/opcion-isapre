@@ -1,0 +1,29 @@
+---
+interface Props {
+  about: {
+    title: string;
+    paragraphOne: string;
+    paragraphTwo: string;
+  };
+}
+
+const { about } = Astro.props;
+---
+
+<section id="quienes-somos" class="section-spacing bg-white">
+  <div class="editorial-shell grid items-center gap-10 lg:grid-cols-2 lg:gap-16">
+    <div class="overflow-hidden rounded-3xl">
+      <img src="/images/equipo-asesoria.jpeg" alt="Equipo de asesoria" class="h-full w-full object-cover" />
+    </div>
+    <div>
+      <h2 class="font-headline text-3xl font-extrabold tracking-tight text-[var(--color-on-surface)] md:text-5xl">{about.title}</h2>
+      <div class="mt-4 h-1.5 w-16 rounded-full bg-[var(--color-primary)]"></div>
+      <p class="mt-6 text-base leading-relaxed text-[var(--color-on-surface-variant)] md:text-lg">
+        {about.paragraphOne}
+      </p>
+      <p class="mt-4 text-base leading-relaxed text-[var(--color-on-surface-variant)] md:text-lg">
+        {about.paragraphTwo}
+      </p>
+    </div>
+  </div>
+</section>

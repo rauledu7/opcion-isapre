@@ -1,0 +1,41 @@
+---
+interface Props {
+  hero: {
+    badge: string;
+    title: string;
+    description: string;
+    primaryCta: string;
+    secondaryCta: string;
+    image: string;
+  };
+}
+
+const { hero } = Astro.props;
+---
+
+<section id="inicio" class="relative min-h-[94vh] overflow-hidden pt-24">
+  <img src={hero.image} || "/images/hero-failia.png" alt={hero.title} class="absolute inset-0 h-full w-full object-cover" />
+  <div class="hero-gradient absolute inset-0"></div>
+
+  <div class="editorial-shell relative flex min-h-[84vh] items-center py-16">
+    <div class="max-w-2xl text-white">
+      <span class="mb-6 inline-block rounded-full bg-[var(--color-secondary-container)] px-4 py-1.5 text-xs font-bold tracking-[0.18em] text-[var(--color-secondary)] uppercase">
+        {hero.badge}
+      </span>
+      <h1 class="font-headline text-4xl leading-tight font-extrabold tracking-tight sm:text-5xl lg:text-7xl">
+        {hero.title}
+      </h1>
+      <p class="mt-6 max-w-xl text-lg text-white/90 sm:text-xl">
+        {hero.description}
+      </p>
+      <div class="mt-10 flex flex-col gap-4 sm:flex-row">
+        <a href="#cotizacion" class="ambient-shadow rounded-xl bg-white px-8 py-4 text-center text-base font-extrabold text-[var(--color-primary-dark)]">
+          {hero.primaryCta}
+        </a>
+        <a href="#quienes-somos" class="rounded-xl border border-white/40 bg-white/10 px-8 py-4 text-center text-base font-semibold backdrop-blur-sm">
+          {hero.secondaryCta}
+        </a>
+      </div>
+    </div>
+  </div>
+</section>

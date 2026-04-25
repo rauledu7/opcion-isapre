@@ -1,0 +1,80 @@
+---
+interface ComparisonItem {
+  icon: string;
+  text: string;
+}
+
+interface Props {
+  comparison: {
+    title: string;
+    subtitle: string;
+    fonasaTitle: string;
+    fonasaSubtitle: string;
+    isapreTitle: string;
+    isapreSubtitle: string;
+    fonasaItems: ComparisonItem[];
+    isapreItems: ComparisonItem[];
+  };
+}
+
+const { comparison } = Astro.props;
+---
+
+<section class="bg-white py-24" id="comparativa">
+  <div class="editorial-shell">
+    <div class="mb-16 text-center">
+      <h2 class="font-headline mb-4 text-4xl font-extrabold text-[var(--color-on-surface)] md:text-5xl">
+        {comparison.title}
+      </h2>
+      <p class="text-lg text-[var(--color-on-surface-variant)]">{comparison.subtitle}</p>
+      <div class="mx-auto mt-6 h-1.5 w-24 rounded-full bg-[var(--color-primary)]"></div>
+    </div>
+    <div class="grid grid-cols-1 gap-8 lg:grid-cols-2">
+      <div class="flex flex-col rounded-3xl border border-[color:rgba(194,198,212,0.3)] bg-[var(--color-surface-low)] p-8">
+        <div class="mb-8 flex items-center gap-4">
+          <div class="flex h-12 w-12 items-center justify-center rounded-2xl bg-slate-400 text-white">
+            <span class="material-symbols-outlined text-3xl">account_balance</span>
+          </div>
+          <div>
+            <h3 class="font-headline text-3xl font-black text-slate-700">{comparison.fonasaTitle}</h3>
+            <p class="font-medium text-slate-500">{comparison.fonasaSubtitle}</p>
+          </div>
+        </div>
+        <ul class="flex-grow space-y-6">
+          {comparison.fonasaItems.map((item, idx) => (
+            <li class:list={['flex gap-4', idx === comparison.fonasaItems.length - 1 && 'rounded-xl border border-white bg-white/50 p-4']}>
+              <span class:list={['material-symbols-outlined mt-0.5 shrink-0', idx === 1 ? 'text-red-600' : idx === 2 || idx === 4 || idx === 5 ? 'text-slate-400' : 'text-[var(--color-primary)]']}>
+                {item.icon}
+              </span>
+              <p class:list={['leading-tight text-[var(--color-on-surface-variant)]', idx === comparison.fonasaItems.length - 1 && 'text-sm font-medium italic']}>{item.text}</p>
+            </li>
+          ))}
+        </ul>
+      </div>
+      <div class="relative flex flex-col overflow-hidden rounded-3xl border border-[color:rgba(0,94,184,0.2)] bg-[color:rgba(0,94,184,0.08)] p-8">
+        <div class="absolute right-0 top-0 rounded-bl-3xl bg-[var(--color-primary)] px-6 py-2 text-sm font-bold tracking-tight text-white">
+          RECOMENDADO
+        </div>
+        <div class="mb-8 flex items-center gap-4">
+          <div class="flex h-12 w-12 items-center justify-center rounded-2xl bg-[var(--color-primary)] text-white">
+            <span class="material-symbols-outlined text-3xl">verified_user</span>
+          </div>
+          <div>
+            <h3 class="font-headline text-3xl font-black text-[var(--color-primary)]">{comparison.isapreTitle}</h3>
+            <p class="font-medium text-[color:rgba(0,94,184,0.7)]">{comparison.isapreSubtitle}</p>
+          </div>
+        </div>
+        <ul class="flex-grow space-y-6">
+          {comparison.isapreItems.map((item, idx) => (
+            <li class:list={['flex gap-4', idx === comparison.isapreItems.length - 1 && 'rounded-xl border border-[color:rgba(0,94,184,0.1)] bg-white/50 p-4']}>
+              <span class:list={['material-symbols-outlined mt-0.5 shrink-0', idx === 0 ? 'text-[var(--color-primary)]' : 'text-[var(--color-secondary)]']}>
+                {item.icon}
+              </span>
+              <p class:list={['leading-tight text-[var(--color-on-surface-variant)]', idx === comparison.isapreItems.length - 1 && 'text-sm font-medium italic']}>{item.text}</p>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>

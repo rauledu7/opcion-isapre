@@ -1,0 +1,101 @@
+---
+interface Props {
+  quote: {
+    title: string;
+    subtitle: string;
+    submitText: string;
+    privacyText: string;
+  };
+}
+
+const { quote } = Astro.props;
+---
+
+<section class="bg-[var(--color-surface-low)] py-24" id="cotizacion">
+  <div class="editorial-shell">
+    <div class="mx-auto max-w-4xl">
+      <div class="mb-16 text-center">
+        <h2 class="font-headline mb-4 text-4xl font-extrabold text-[var(--color-on-surface)] md:text-5xl">{quote.title}</h2>
+        <p class="text-lg text-[var(--color-on-surface-variant)]">{quote.subtitle}</p>
+      </div>
+      <form class="rounded-2xl border border-[color:rgba(194,198,212,0.4)] bg-white p-8 shadow-xl md:p-12">
+        <div class="grid grid-cols-1 gap-x-8 gap-y-6 md:grid-cols-2">
+          <div class="flex flex-col gap-2">
+            <label class="font-label text-sm font-bold text-[var(--color-on-surface-variant)]" for="nombre">Nombre Completo</label>
+            <input class="input-focus-ring rounded-lg border border-[color:rgba(194,198,212,0.4)] bg-[var(--color-surface)] px-4 py-3 text-[var(--color-on-surface)] transition-all" id="nombre" placeholder="Ej: Juan Perez Soto" type="text" />
+          </div>
+          <div class="flex flex-col gap-2">
+            <label class="font-label text-sm font-bold text-[var(--color-on-surface-variant)]" for="rut">RUT</label>
+            <input class="input-focus-ring rounded-lg border border-[color:rgba(194,198,212,0.4)] bg-[var(--color-surface)] px-4 py-3 text-[var(--color-on-surface)] transition-all" id="rut" placeholder="12.345.678-9" type="text" />
+          </div>
+          <div class="flex flex-col gap-2">
+            <label class="font-label text-sm font-bold text-[var(--color-on-surface-variant)]" for="edad1">Edad Cotizante 1</label>
+            <input class="input-focus-ring rounded-lg border border-[color:rgba(194,198,212,0.4)] bg-[var(--color-surface)] px-4 py-3 text-[var(--color-on-surface)] transition-all" id="edad1" placeholder="Ej: 35" type="number" />
+          </div>
+          <div class="flex flex-col gap-2">
+            <label class="font-label text-sm font-bold text-[var(--color-on-surface-variant)]" for="edad2">Edad Cotizante 2 (Opcional)</label>
+            <input class="input-focus-ring rounded-lg border border-[color:rgba(194,198,212,0.4)] bg-[var(--color-surface)] px-4 py-3 text-[var(--color-on-surface)] transition-all" id="edad2" placeholder="Ej: 32" type="number" />
+          </div>
+          <div class="flex flex-col gap-2">
+            <label class="font-label text-sm font-bold text-[var(--color-on-surface-variant)]" for="telefono">Telefono</label>
+            <input class="input-focus-ring rounded-lg border border-[color:rgba(194,198,212,0.4)] bg-[var(--color-surface)] px-4 py-3 text-[var(--color-on-surface)] transition-all" id="telefono" placeholder="+56 9 1234 5678" type="tel" />
+          </div>
+          <div class="flex flex-col gap-2">
+            <label class="font-label text-sm font-bold text-[var(--color-on-surface-variant)]" for="email">Correo Electronico</label>
+            <input class="input-focus-ring rounded-lg border border-[color:rgba(194,198,212,0.4)] bg-[var(--color-surface)] px-4 py-3 text-[var(--color-on-surface)] transition-all" id="email" placeholder="usuario@correo.com" type="email" />
+          </div>
+          <div class="flex flex-col gap-2">
+            <label class="font-label text-sm font-bold text-[var(--color-on-surface-variant)]" for="renta">Renta Imponible 1 (Sueldo Bruto)</label>
+            <input class="input-focus-ring rounded-lg border border-[color:rgba(194,198,212,0.4)] bg-[var(--color-surface)] px-4 py-3 text-[var(--color-on-surface)] transition-all" id="renta" placeholder="Ej: 1500000" type="number" />
+          </div>
+          <div class="flex flex-col gap-2">
+            <label class="font-label text-sm font-bold text-[var(--color-on-surface-variant)]" for="clinicas">Clinicas Preferentes</label>
+            <input class="input-focus-ring rounded-lg border border-[color:rgba(194,198,212,0.4)] bg-[var(--color-surface)] px-4 py-3 text-[var(--color-on-surface)] transition-all" id="clinicas" placeholder="Ej: Clinica Alemana, Santa Maria" type="text" />
+          </div>
+          <div class="flex flex-col gap-2 md:col-span-2">
+            <label class="font-label text-sm font-bold text-[var(--color-on-surface-variant)]" for="prevision">Prevision Actual</label>
+            <input class="input-focus-ring rounded-lg border border-[color:rgba(194,198,212,0.4)] bg-[var(--color-surface)] px-4 py-3 text-[var(--color-on-surface)] transition-all" id="prevision" placeholder="Ej: Fonasa, Isapre Consalud" type="text" />
+          </div>
+          <div class="mt-4 flex flex-col gap-4 border-t border-[color:rgba(194,198,212,0.4)] pt-6 md:col-span-2">
+            <label class="font-label text-sm font-bold text-[var(--color-on-surface-variant)]">Posee Beneficiarios (cargas)?</label>
+            <div class="flex items-center gap-6 py-2">
+              <label class="group inline-flex cursor-pointer items-center">
+                <input class="peer sr-only" name="beneficiarios" onchange="document.getElementById('charges-fields')?.classList.remove('hidden')" type="radio" value="si" />
+                <div class="relative h-6 w-12 rounded-full bg-slate-200 peer-checked:bg-[var(--color-primary)] after:absolute after:start-[2px] after:top-[2px] after:h-5 after:w-5 after:rounded-full after:border after:border-gray-300 after:bg-white after:transition-all after:content-[''] peer-checked:after:translate-x-full"></div>
+                <span class="ms-3 text-sm font-medium text-[var(--color-on-surface)]">SI</span>
+              </label>
+              <label class="group inline-flex cursor-pointer items-center">
+                <input checked class="peer sr-only" name="beneficiarios" onchange="document.getElementById('charges-fields')?.classList.add('hidden')" type="radio" value="no" />
+                <div class="relative h-6 w-12 rounded-full bg-slate-200 peer-checked:bg-[var(--color-primary)] after:absolute after:start-[2px] after:top-[2px] after:h-5 after:w-5 after:rounded-full after:border after:border-gray-300 after:bg-white after:transition-all after:content-[''] peer-checked:after:translate-x-full"></div>
+                <span class="ms-3 text-sm font-medium text-[var(--color-on-surface)]">NO</span>
+              </label>
+            </div>
+            <div class="hidden space-y-6 pt-4" id="charges-fields">
+              <div class="grid grid-cols-1 gap-6 md:grid-cols-2">
+                <div class="flex flex-col gap-2">
+                  <label class="font-label text-sm font-bold text-[var(--color-on-surface-variant)]" for="rut_carga">RUT Carga</label>
+                  <input class="input-focus-ring rounded-lg border border-[color:rgba(194,198,212,0.4)] bg-[var(--color-surface)] px-4 py-3 text-[var(--color-on-surface)] transition-all" id="rut_carga" placeholder="12.345.678-9" type="text" />
+                </div>
+                <div class="flex flex-col gap-2">
+                  <label class="font-label text-sm font-bold text-[var(--color-on-surface-variant)]" for="edad_carga">Edad Carga</label>
+                  <input class="input-focus-ring rounded-lg border border-[color:rgba(194,198,212,0.4)] bg-[var(--color-surface)] px-4 py-3 text-[var(--color-on-surface)] transition-all" id="edad_carga" placeholder="Ej: 8" type="number" />
+                </div>
+              </div>
+              <button class="inline-flex items-center gap-2 text-sm font-bold text-[var(--color-primary)] hover:underline" type="button">
+                <span class="material-symbols-outlined text-lg">add</span>
+                Agregar Carga
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="mt-12">
+          <button class="flex w-full items-center justify-center gap-3 rounded-xl bg-[var(--color-primary)] py-5 font-headline text-xl font-extrabold text-white shadow-lg transition-all hover:brightness-110 active:scale-[0.98]" type="submit">
+            {quote.submitText}
+            <span class="material-symbols-outlined">send</span>
+          </button>
+          <p class="mt-4 text-center text-xs text-[var(--color-on-surface-variant)]">{quote.privacyText}</p>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>

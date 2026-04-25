@@ -1,11 +1,37 @@
 ---
-import Welcome from '../components/Welcome.astro';
+import { createReader } from '@keystatic/core/reader';
+import keystaticConfig from '../../keystatic.config';
 import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import HeroSection from '../components/HeroSection.astro';
+import PartnersSection from '../components/PartnersSection.astro';
+import QuoteFormSection from '../components/QuoteFormSection.astro';
+import AboutSection from '../components/AboutSection.astro';
+import PromoSection from '../components/PromoSection.astro';
+import ComparisonSection from '../components/ComparisonSection.astro';
+import BenefitsSection from '../components/BenefitsSection.astro';
+import FaqSection from '../components/FaqSection.astro';
+import Footer from '../components/Footer.astro';
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+const reader = createReader(process.cwd(), keystaticConfig);
+const landing = await reader.singletons.landing.read();
+
+if (!landing) {
+  throw new Error('No se encontro contenido de landing en Keystatic.');
+}
 ---
 
-<Layout>
-	<Welcome />
+<Layout title="Tu Opcion Isapre | Landing">
+  <Header siteName={landing.siteName} headerCta={landing.headerCta} />
+  <main>
+    <HeroSection hero={landing.hero} />
+    <PartnersSection title={landing.partnersTitle} partners={landing.partners} />
+    <QuoteFormSection quote={landing.quote} />
+    <AboutSection about={landing.about} />
+    <PromoSection text={landing.promoText} />
+    <ComparisonSection comparison={landing.comparison} />
+    <BenefitsSection benefits={landing.benefits} />
+    <FaqSection title={landing.faqTitle} faqs={landing.faqs} />
+  </main>
+  <Footer siteName={landing.siteName} footer={landing.footer} />
 </Layout>

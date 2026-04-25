@@ -1,0 +1,54 @@
+---
+interface BenefitItem {
+  icon: string;
+  title: string;
+  description: string;
+}
+
+interface Props {
+  benefits: {
+    badge: string;
+    title: string;
+    items: BenefitItem[];
+  };
+}
+
+const { benefits } = Astro.props;
+---
+
+<section class="bg-[var(--color-surface-low)] py-24" id="beneficios">
+  <div class="editorial-shell">
+    <div class="flex flex-col items-center gap-16 lg:flex-row">
+      <div class="order-2 w-full lg:order-1 lg:w-1/2">
+        <div class="relative">
+          <div class="absolute -inset-4 -rotate-2 rounded-3xl bg-[color:rgba(0,94,184,0.05)]"></div>
+          <img alt="Manos protegiendo a la familia" class="relative z-10 aspect-[4/3] h-auto w-full rounded-2xl object-cover shadow-2xl" src="/images/proteccion-familia.jpeg" />
+          <div class="absolute -bottom-6 -right-6 z-20 hidden rounded-2xl bg-[var(--color-secondary-container)] p-6 shadow-lg md:block">
+            <span class="material-symbols-outlined text-4xl text-[color:#006778]">health_and_safety</span>
+          </div>
+        </div>
+      </div>
+      <div class="order-1 w-full lg:order-2 lg:w-1/2">
+        <div class="mb-6 inline-flex items-center gap-2 rounded-full bg-[color:rgba(0,94,184,0.1)] px-4 py-1 text-[var(--color-primary)]">
+          <span class="font-label text-xs font-bold tracking-widest uppercase">{benefits.badge}</span>
+        </div>
+        <h2 class="font-headline mb-8 text-4xl leading-tight font-extrabold text-[var(--color-on-surface)] md:text-5xl">
+          {benefits.title}
+        </h2>
+        <div class="space-y-4">
+          {benefits.items.map((item) => (
+            <div class="group flex items-start gap-4 rounded-xl p-4 transition-colors hover:bg-white">
+              <div class="rounded-lg bg-[color:rgba(0,94,184,0.1)] p-2 transition-colors group-hover:bg-[var(--color-primary)] group-hover:text-white">
+                <span class="material-symbols-outlined text-2xl leading-none">{item.icon}</span>
+              </div>
+              <div>
+                <h4 class="font-bold text-[var(--color-on-surface)]">{item.title}</h4>
+                <p class="text-sm text-[var(--color-on-surface-variant)]">{item.description}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,27 @@
+---
+interface Props {
+  siteName: string;
+  headerCta: string;
+}
+
+const { siteName, headerCta } = Astro.props;
+---
+
+<header class="glass-nav fixed inset-x-0 top-0 z-50 border-b border-white/40">
+  <div class="editorial-shell flex h-18 items-center justify-between">
+    <a href="#inicio" class="font-headline text-primary-dark text-xl font-extrabold tracking-tight">{siteName}</a>
+    <nav class="hidden items-center gap-7 text-sm font-semibold text-slate-600 md:flex">
+      <a href="#quienes-somos" class="hover:text-primary">Quienes Somos</a>
+      <a href="#comparativa" class="hover:text-primary">Fonasa vs Isapre</a>
+      <a href="#beneficios" class="hover:text-primary">Beneficios</a>
+      <a href="#cotizacion" class="hover:text-primary">Cotizar</a>
+      <a href="#faq" class="hover:text-primary">FAQ</a>
+    </nav>
+    <a
+      href="#cotizacion"
+      class="ambient-shadow rounded-xl bg-[var(--color-primary)] px-4 py-2.5 text-sm font-bold text-white transition hover:brightness-110 md:px-6"
+    >
+      {headerCta}
+    </a>
+  </div>
+</header>

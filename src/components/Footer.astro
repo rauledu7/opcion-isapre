@@ -1,0 +1,27 @@
+---
+interface Props {
+  siteName: string;
+  footer: {
+    description: string;
+    linkInicio: string;
+    linkCotizar: string;
+    linkFaq: string;
+  };
+}
+
+const { siteName, footer } = Astro.props;
+---
+
+<footer class="bg-[var(--color-surface-low)] py-12">
+  <div class="editorial-shell flex flex-col items-center justify-between gap-5 text-center md:flex-row md:text-left">
+    <div>
+      <p class="font-headline text-xl font-extrabold text-[var(--color-primary-dark)]">{siteName}</p>
+      <p class="mt-1 text-sm text-[var(--color-on-surface-variant)]">{footer.description}</p>
+    </div>
+    <div class="flex gap-5 text-sm font-semibold text-slate-600">
+      <a href="#inicio">{footer.linkInicio}</a>
+      <a href="#cotizacion">{footer.linkCotizar}</a>
+      <a href="#faq">{footer.linkFaq}</a>
+    </div>
+  </div>
+</footer>

@@ -1,0 +1,63 @@
+---
+interface Props {
+  title: string;
+  // Usamos el signo ? para indicar que es opcional y evitar errores de tipado
+  partners?: Array<{
+    name: string;
+    logo: string;
+  }>;
+}
+
+// Asignamos un array vacío por defecto a partners
+const { title, partners = [] } = Astro.props;
+---
+
+<section class="overflow-hidden bg-white py-12" id="nuestras-alianzas">
+  <div class="editorial-shell mb-8 text-center">
+    <h2
+      class="font-headline text-2xl font-extrabold text-[var(--color-on-surface)] md:text-3xl"
+    >
+      {title}
+    </h2>
+    <div class="mx-auto mt-3 h-1 w-16 rounded-full bg-[var(--color-primary)]">
+    </div>
+  </div>
+
+  <div class="logo-carousel-container relative w-full overflow-hidden">
+    {/* Verificamos que existan elementos para renderizar el carrusel */}
+    {partners && partners.length > 0 ? (
+      <div class="animate-scroll flex items-center gap-16 whitespace-nowrap py-4 md:gap-32">
+        {/* Primera vuelta del carrusel */}
+        <div class="flex shrink-0 items-center gap-16 md:gap-32">
+          {
+            partners.map((partner) => (
+              <img
+                alt={partner.name}
+                src={partner.logo}
+                class="h-10 w-auto object-contain opacity-80 grayscale transition-all duration-300 hover:opacity-100 hover:grayscale-0 md:h-12"
+              />
+            ))
+          }
+        </div>
+
+        {/* Segunda vuelta (Duplicado para el loop infinito) */}
+        <div class="flex shrink-0 items-center gap-16 md:gap-32">
+          {
+            partners.map((partner) => (
+              <img
+                alt={partner.name}
+                src={partner.logo}
+                class="h-10 w-auto object-contain opacity-80 grayscale transition-all duration-300 hover:opacity-100 hover:grayscale-0 md:h-12"
+              />
+            ))
+          }
+        </div>
+      </div>
+    ) : (
+      /* Mensaje opcional por si no hay logos cargados aún */
+      <div class="py-10 text-center text-gray-400 italic">
+        Carga los logos de las Isapres desde el panel de administración.
+      </div>
+    )}
+  </div>
+</section>

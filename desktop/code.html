@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+
+<html lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-container-low": "#f2f4f6",
+                    "error-container": "#ffdad6",
+                    "tertiary-fixed": "#cee5f9",
+                    "inverse-primary": "#a9c7ff",
+                    "primary": "#005EB8",
+                    "on-secondary-fixed-variant": "#004e5b",
+                    "surface-container-high": "#e6e8ea",
+                    "on-surface": "#191c1e",
+                    "error": "#ba1a1a",
+                    "surface-bright": "#f7f9fb",
+                    "secondary-container": "#7de6ff",
+                    "secondary": "#006879",
+                    "on-background": "#191c1e",
+                    "on-surface-variant": "#424752",
+                    "on-primary-fixed-variant": "#00468c",
+                    "on-tertiary-container": "#c6ddf1",
+                    "inverse-surface": "#2d3133",
+                    "inverse-on-surface": "#eff1f3",
+                    "secondary-fixed": "#a9edff",
+                    "on-tertiary-fixed-variant": "#334959",
+                    "on-error": "#ffffff",
+                    "background": "#f7f9fb",
+                    "tertiary-container": "#4c6273",
+                    "primary-container": "#005eb8",
+                    "on-primary-fixed": "#001b3d",
+                    "surface-tint": "#005db6",
+                    "on-secondary": "#ffffff",
+                    "outline": "#727783",
+                    "outline-variant": "#c2c6d4",
+                    "on-tertiary-fixed": "#051e2c",
+                    "surface-dim": "#d8dadc",
+                    "tertiary-fixed-dim": "#b2c9dd",
+                    "surface-container-highest": "#e0e3e5",
+                    "primary-fixed-dim": "#a9c7ff",
+                    "surface-container-lowest": "#ffffff",
+                    "secondary-fixed-dim": "#6bd5ed",
+                    "surface": "#f7f9fb",
+                    "surface-container": "#eceef0",
+                    "on-primary": "#ffffff",
+                    "tertiary": "#344a5a",
+                    "on-error-container": "#93000a",
+                    "on-secondary-container": "#006778",
+                    "on-primary-container": "#c8daff",
+                    "primary-fixed": "#d6e3ff",
+                    "on-tertiary": "#ffffff",
+                    "surface-variant": "#e0e3e5",
+                    "on-secondary-fixed": "#001f26"
+            },
+            "borderRadius": {
+                    "DEFAULT": "8px",
+                    "lg": "12px",
+                    "xl": "16px",
+                    "full": "9999px"
+            },
+            "fontFamily": {
+                    "headline": ["Manrope"],
+                    "body": ["Manrope"],
+                    "label": ["Manrope"]
+            },
+            "animation": {
+                "scroll": "scroll 30s linear infinite",
+            },
+            "keyframes": {
+                "scroll": {
+                    "0%": { transform: "translateX(0)" },
+                    "100%": { transform: "translateX(-50%)" },
+                }
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        html {
+            scroll-behavior: smooth;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .hero-overlay {
+            background: linear-gradient(to right, rgba(0, 0, 0, 0.75) 0%, rgba(0, 0, 0, 0.4) 50%, rgba(0, 0, 0, 0.2) 100%);
+        }
+        .text-shadow-strong {
+            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+        }
+        .logo-carousel-container {
+            mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
+        }
+        .input-focus-ring:focus {
+            box-shadow: 0 0 0 2px white, 0 0 0 4px #005EB8;
+            outline: none;
+        }
+        .faq-accordion[open] .faq-icon {
+            transform: rotate(180deg);
+        }
+        #charges-fields {
+            display: none;
+        }
+        input[name="beneficiarios"][value="si"]:checked ~ #charges-fields {
+            display: block;
+        }
+    </style>
+</head>
+<body class="bg-surface font-body text-on-surface antialiased">
+<!-- TopAppBar -->
+<nav class="fixed top-0 w-full z-50 bg-white/80 backdrop-blur-md shadow-sm">
+<div class="flex justify-between items-center max-w-7xl mx-auto px-8 h-20">
+<div class="flex items-center gap-2 cursor-pointer active:opacity-70 transition-opacity" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
+<span class="material-symbols-outlined text-primary text-3xl" data-icon="clinical_notes">clinical_notes</span>
+<span class="text-xl font-black text-primary font-headline tracking-tight">Editorial Assurance</span>
+</div>
+<div class="hidden md:flex items-center gap-8 text-sm font-medium">
+<a class="text-slate-600 hover:text-primary transition-colors" href="#inicio">Inicio</a>
+<a class="text-slate-600 hover:text-primary transition-colors" href="#quienes-somos">Quiénes Somos</a>
+<a class="text-slate-600 hover:text-primary transition-colors" href="#comparativa">Fonasa vs Isapre</a>
+<a class="text-slate-600 hover:text-primary transition-colors" href="#beneficios">Por qué elegirnos</a>
+<a class="text-slate-600 hover:text-primary transition-colors" href="#cotizacion">Cotizar</a>
+</div>
+<a class="bg-primary text-on-primary px-6 py-2.5 rounded-lg font-headline font-bold text-sm tracking-wide shadow-md hover:brightness-110 transition-all cursor-pointer" href="#cotizacion">
+            Get Advice
+        </a>
+</div>
+</nav>
+<!-- Hero Section -->
+<main class="relative min-h-screen flex items-center overflow-hidden" id="inicio">
+<!-- Background Image Container -->
+<div class="absolute inset-0 z-0">
+<img alt="Familia feliz" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida/ADBb0ujvHaxRdFF-5V3R3KJfrazchMTjila4XXlhW3P5jzl6ZwdQPSS7xlojW7tTiqu44timdxEHLyVLwNHWhjZTuumkPkuCq8cpCnEbedjzoOCXPMxcWvzvK-M-1keY9G7i61gJCaXXmvoJntUWQZDP4jy0bdmDz-db7e-iUX6IlUqA-Iffxm3WbkgtbYH7jYwHzEcmBGw5oFsUvdafrh9CQd3nXpE_TV8lMYPkvrQKBVQEP0Kukt3GRp_-2dC0HqB0N17eEbUPzrlhxW4"/>
+<!-- Text Legibility Overlay -->
+<div class="absolute inset-0 hero-overlay"></div>
+</div>
+<!-- Content Canvas -->
+<div class="relative z-10 max-w-7xl mx-auto px-8 w-full pt-20">
+<div class="max-w-2xl">
+<!-- Eyebrow/Badge -->
+<div class="inline-flex items-center gap-2 bg-secondary-container text-on-secondary-container px-4 py-1.5 rounded-full mb-8 shadow-sm">
+<span class="material-symbols-outlined text-sm" data-icon="verified">verified</span>
+<span class="text-xs font-bold uppercase tracking-widest font-label">Asesoría de Confianza</span>
+</div>
+<!-- Main Headlines -->
+<h1 class="font-headline text-6xl md:text-7xl font-extrabold text-white leading-[1.1] tracking-tight mb-6 text-shadow-strong">
+                Tu Opción <span class="text-secondary-container">Isapre</span>
+</h1>
+<p class="font-body text-xl md:text-2xl text-white leading-relaxed mb-10 max-w-lg text-shadow-strong">
+                Tu mejor opción en planes de salud. Te ofrecemos los mejores beneficios para proteger lo que más importa.
+            </p>
+<!-- Action Cluster -->
+<div class="flex flex-wrap gap-4 items-center">
+<a class="group flex items-center gap-3 bg-primary text-on-primary px-8 py-4 rounded-lg font-headline font-extrabold text-lg shadow-xl hover:scale-105 transition-all duration-300" href="#cotizacion">
+                    Cotizar Ahora
+                    <span class="material-symbols-outlined group-hover:translate-x-1 transition-transform" data-icon="arrow_forward">arrow_forward</span>
+</a>
+<button class="flex items-center gap-2 bg-white/10 backdrop-blur-md text-white border-2 border-white/40 px-8 py-4 rounded-lg font-headline font-bold text-lg hover:bg-white/20 transition-all duration-300">
+<span class="material-symbols-outlined" data-icon="chat">chat</span>
+                    Contáctanos por WhatsApp
+                </button>
+</div>
+</div>
+</div>
+</main>
+<!-- Nuestras Alianzas Section (Carrusel) -->
+<section class="py-12 bg-white overflow-hidden" id="nuestras-alianzas">
+<div class="max-w-7xl mx-auto px-8 mb-8 text-center">
+<h2 class="font-headline text-2xl md:text-3xl font-extrabold text-on-surface mb-3">
+            Trabajamos con las mejores Isapres de Chile
+        </h2>
+<div class="w-16 h-1 bg-primary mx-auto rounded-full"></div>
+</div>
+<div class="logo-carousel-container relative w-full overflow-hidden">
+<div class="flex animate-scroll whitespace-nowrap gap-16 md:gap-32 items-center py-4">
+<div class="flex items-center gap-16 md:gap-32 flex-shrink-0">
+<img alt="Banmédica" class="h-10 md:h-12 w-auto object-contain grayscale hover:grayscale-0 transition-all duration-300 opacity-80 hover:opacity-100" src="https://lh3.googleusercontent.com/aida/ADBb0uj_Nyzmx9vcsTNLMXcWQn0lepMCZpPlxVoMIim5jQrfA4WUlBE0rgKAFqVx84LPxIUb26pCMdR0Ga5ioihGRf3qZD3MiRBi6aF-E34vhEbtvZTZOxpCdksYawUwfEpIuFX7rvvVSwikmAs7BYuoaHx-u0i3pnTlFcHZ3WYSjFi4LYqwFiaHSG9Ex9BMQsMTxICf9TlJbn4YPiIeSRhss7-UeNrcWwOG8SlGgguzKujVvehlY51YJAndKfZBexU1J-h8p3DPLij9dzU"/>
+<img alt="Consalud" class="h-10 md:h-12 w-auto object-contain grayscale hover:grayscale-0 transition-all duration-300 opacity-80 hover:opacity-100" src="https://lh3.googleusercontent.com/aida/ADBb0ujCsa-2_PYuX3yc-XLRuKuI_sjhamn2usopqS5nDquhHGDcBf9sl0IO4Pp8KS18YkYKJMeny9oI1Fd2m-5B2BO7pYgJ1btV-zjIM988NiqujzpNqZFNYPJXYpvczVJ6oPJBUFiggqqbgWG9k68PHf42qP1BVpip0toOC0mD6xA9WLkOmMUV2g61dqfbr0nJN9Di2TE9IwKSge9-zzt0b5jBTigWat32II_17NRkS7NVKFfu15MVE8F5gb-yRwigAeWYtuVPPXW7i2Y"/>
+<img alt="Colmena" class="h-10 md:h-12 w-auto object-contain grayscale hover:grayscale-0 transition-all duration-300 opacity-80 hover:opacity-100" src="https://lh3.googleusercontent.com/aida/ADBb0ug4jiEKHjxphusQ_Nc3Bzop-w9Pcekx6fYxh2ABSHwI_zbviQ0V_j3-aVaKUMGwxHBkyieJdrHFVzKimoOA64rWnw__lVBbNOmDb-a0NAyNFrl_yQ-q-Nu2sUomGiu5u7FwQEG5TVFU0L3BHo3DQ2ajhJm7VcicEpMkI9WdGW5hs1nFQ6yboPuleZpDXtH148cQsvtyzNl3f8z6KBrVbNojmE8xPXP4rMxtcrYJgnZJnaZ3JmcnimOeLR0geNCQQy546QblJ6dk0w"/>
+<img alt="Cruz Blanca" class="h-10 md:h-12 w-auto object-contain grayscale hover:grayscale-0 transition-all duration-300 opacity-80 hover:opacity-100" src="https://lh3.googleusercontent.com/aida/ADBb0ujsxjewvrWsavfdAo8-PNOKriCDzztCpTW7OHZ95TdLulp83hzqyjn0bQ02VJeulus9EXTWjQWI7EITsh8IW7Ul3OqhXjF6EYsHLr4kv1atODmoxetzmWc95ANfKzc6-bZaXhDskJ9hcWShFhDrs1gp2dQckowoYBkcDPG5G_KXOBEIcx853B_L7KzJzAL0pgS8KqsCd6dlfbwJ7uAtAvkIibAw54u0-P6WLCRnH5icVyiUgGMOPuu1NiGkj3UBXQhyjKZBY_sYcQ"/>
+<img alt="Vida Tres" class="h-10 md:h-12 w-auto object-contain grayscale hover:grayscale-0 transition-all duration-300 opacity-80 hover:opacity-100" src="https://lh3.googleusercontent.com/aida/ADBb0uiLHZeXuiE1Sn1wf0cPzlLO1UyiqVIgJ94eCEQMh6nFLB6CbiL2KvLiULxInizMOsduSxhCW0AA-urZEB6Tkr8Q4WSxDo4qwT2ypSVweWrWeEsy0_Xylp2Iy75unjHnuoZ2nRz6yVr7XkUHGAA2eP7_t2ERv0-LEHKbHcQ078KRVO_-fl7i0dQI9C1cAGspID_N4A2PKnqT0WF-CA55XfF9wgxgrSVqzM0_K8QhoUZcKz0K-vvq6zOWEi3aYMHz3SsCbN0wC_sdJw"/>
+</div>
+<div class="flex items-center gap-16 md:gap-32 flex-shrink-0">
+<img alt="Banmédica" class="h-10 md:h-12 w-auto object-contain grayscale hover:grayscale-0 transition-all duration-300 opacity-80 hover:opacity-100" src="https://lh3.googleusercontent.com/aida/ADBb0uj_Nyzmx9vcsTNLMXcWQn0lepMCZpPlxVoMIim5jQrfA4WUlBE0rgKAFqVx84LPxIUb26pCMdR0Ga5ioihGRf3qZD3MiRBi6aF-E34vhEbtvZTZOxpCdksYawUwfEpIuFX7rvvVSwikmAs7BYuoaHx-u0i3pnTlFcHZ3WYSjFi4LYqwFiaHSG9Ex9BMQsMTxICf9TlJbn4YPiIeSRhss7-UeNrcWwOG8SlGgguzKujVvehlY51YJAndKfZBexU1J-h8p3DPLij9dzU"/>
+<img alt="Consalud" class="h-10 md:h-12 w-auto object-contain grayscale hover:grayscale-0 transition-all duration-300 opacity-80 hover:opacity-100" src="https://lh3.googleusercontent.com/aida/ADBb0ujCsa-2_PYuX3yc-XLRuKuI_sjhamn2usopqS5nDquhHGDcBf9sl0IO4Pp8KS18YkYKJMeny9oI1Fd2m-5B2BO7pYgJ1btV-zjIM988NiqujzpNqZFNYPJXYpvczVJ6oPJBUFiggqqbgWG9k68PHf42qP1BVpip0toOC0mD6xA9WLkOmMUV2g61dqfbr0nJN9Di2TE9IwKSge9-zzt0b5jBTigWat32II_17NRkS7NVKFfu15MVE8F5gb-yRwigAeWYtuVPPXW7i2Y"/>
+<img alt="Colmena" class="h-10 md:h-12 w-auto object-contain grayscale hover:grayscale-0 transition-all duration-300 opacity-80 hover:opacity-100" src="https://lh3.googleusercontent.com/aida/ADBb0ug4jiEKHjxphusQ_Nc3Bzop-w9Pcekx6fYxh2ABSHwI_zbviQ0V_j3-aVaKUMGwxHBkyieJdrHFVzKimoOA64rWnw__lVBbNOmDb-a0NAyNFrl_yQ-q-Nu2sUomGiu5u7FwQEG5TVFU0L3BHo3DQ2ajhJm7VcicEpMkI9WdGW5hs1nFQ6yboPuleZpDXtH148cQsvtyzNl3f8z6KBrVbNojmE8xPXP4rMxtcrYJgnZJnaZ3JmcnimOeLR0geNCQQy546QblJ6dk0w"/>
+<img alt="Cruz Blanca" class="h-10 md:h-12 w-auto object-contain grayscale hover:grayscale-0 transition-all duration-300 opacity-80 hover:opacity-100" src="https://lh3.googleusercontent.com/aida/ADBb0ujsxjewvrWsavfdAo8-PNOKriCDzztCpTW7OHZ95TdLulp83hzqyjn0bQ02VJeulus9EXTWjQWI7EITsh8IW7Ul3OqhXjF6EYsHLr4kv1atODmoxetzmWc95ANfKzc6-bZaXhDskJ9hcWShFhDrs1gp2dQckowoYBkcDPG5G_KXOBEIcx853B_L7KzJzAL0pgS8KqsCd6dlfbwJ7uAtAvkIibAw54u0-P6WLCRnH5icVyiUgGMOPuu1NiGkj3UBXQhyjKZBY_sYcQ"/>
+<img alt="Vida Tres" class="h-10 md:h-12 w-auto object-contain grayscale hover:grayscale-0 transition-all duration-300 opacity-80 hover:opacity-100" src="https://lh3.googleusercontent.com/aida/ADBb0uiLHZeXuiE1Sn1wf0cPzlLO1UyiqVIgJ94eCEQMh6nFLB6CbiL2KvLiULxInizMOsduSxhCW0AA-urZEB6Tkr8Q4WSxDo4qwT2ypSVweWrWeEsy0_Xylp2Iy75unjHnuoZ2nRz6yVr7XkUHGAA2eP7_t2ERv0-LEHKbHcQ078KRVO_-fl7i0dQI9C1cAGspID_N4A2PKnqT0WF-CA55XfF9wgxgrSVqzM0_K8QhoUZcKz0K-vvq6zOWEi3aYMHz3SsCbN0wC_sdJw"/>
+</div>
+</div>
+</div>
+</section>
+<!-- Quotation Form Section -->
+<section class="py-24 bg-surface-container-low" id="cotizacion">
+<div class="max-w-7xl mx-auto px-8">
+<div class="max-w-4xl mx-auto">
+<div class="text-center mb-16">
+<h2 class="font-headline text-4xl md:text-5xl font-extrabold text-on-surface mb-4">
+                    Cotiza tu Plan Ideal en Minutos
+                </h2>
+<p class="text-on-surface-variant text-lg">Completa el formulario y un asesor experto se pondrá en contacto contigo.</p>
+</div>
+<form class="bg-white p-8 md:p-12 rounded-2xl shadow-xl border border-outline-variant">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-6">
+<!-- Nombre Completo -->
+<div class="flex flex-col gap-2">
+<label class="text-sm font-bold text-on-surface-variant font-label" for="nombre">Nombre Completo</label>
+<input class="bg-surface-bright border border-outline-variant rounded-lg px-4 py-3 text-on-surface input-focus-ring transition-all" id="nombre" placeholder="Ej: Juan Pérez Soto" type="text"/>
+</div>
+<!-- RUT -->
+<div class="flex flex-col gap-2">
+<label class="text-sm font-bold text-on-surface-variant font-label" for="rut">RUT</label>
+<input class="bg-surface-bright border border-outline-variant rounded-lg px-4 py-3 text-on-surface input-focus-ring transition-all" id="rut" placeholder="12.345.678-9" type="text"/>
+</div>
+<!-- Edad Cotizante 1 -->
+<div class="flex flex-col gap-2">
+<label class="text-sm font-bold text-on-surface-variant font-label" for="edad1">Edad Cotizante 1</label>
+<input class="bg-surface-bright border border-outline-variant rounded-lg px-4 py-3 text-on-surface input-focus-ring transition-all" id="edad1" placeholder="Ej: 35" type="number"/>
+</div>
+<!-- Edad Cotizante 2 -->
+<div class="flex flex-col gap-2">
+<label class="text-sm font-bold text-on-surface-variant font-label" for="edad2">Edad Cotizante 2 (Opcional)</label>
+<input class="bg-surface-bright border border-outline-variant rounded-lg px-4 py-3 text-on-surface input-focus-ring transition-all" id="edad2" placeholder="Ej: 32" type="number"/>
+</div>
+<!-- Teléfono -->
+<div class="flex flex-col gap-2">
+<label class="text-sm font-bold text-on-surface-variant font-label" for="telefono">Teléfono</label>
+<input class="bg-surface-bright border border-outline-variant rounded-lg px-4 py-3 text-on-surface input-focus-ring transition-all" id="telefono" placeholder="+56 9 1234 5678" type="tel"/>
+</div>
+<!-- Correo Electrónico -->
+<div class="flex flex-col gap-2">
+<label class="text-sm font-bold text-on-surface-variant font-label" for="email">Correo Electrónico</label>
+<input class="bg-surface-bright border border-outline-variant rounded-lg px-4 py-3 text-on-surface input-focus-ring transition-all" id="email" placeholder="usuario@correo.com" type="email"/>
+</div>
+<!-- Renta Imponible 1 -->
+<div class="flex flex-col gap-2">
+<label class="text-sm font-bold text-on-surface-variant font-label" for="renta">Renta Imponible 1 (Sueldo Bruto)</label>
+<input class="bg-surface-bright border border-outline-variant rounded-lg px-4 py-3 text-on-surface input-focus-ring transition-all" id="renta" placeholder="Ej: 1500000" type="number"/>
+</div>
+<!-- Clínicas Preferentes -->
+<div class="flex flex-col gap-2">
+<label class="text-sm font-bold text-on-surface-variant font-label" for="clinicas">Clínicas Preferentes</label>
+<input class="bg-surface-bright border border-outline-variant rounded-lg px-4 py-3 text-on-surface input-focus-ring transition-all" id="clinicas" placeholder="Ej: Clínica Alemana, Santa María" type="text"/>
+</div>
+<!-- Previsión Actual -->
+<div class="flex flex-col md:col-span-2 gap-2">
+<label class="text-sm font-bold text-on-surface-variant font-label" for="prevision">Previsión Actual</label>
+<input class="bg-surface-bright border border-outline-variant rounded-lg px-4 py-3 text-on-surface input-focus-ring transition-all" id="prevision" placeholder="Ej: Fonasa, Isapre Consalud" type="text"/>
+</div>
+<!-- Beneficiarios Logic (Moved to the end) -->
+<div class="flex flex-col md:col-span-2 gap-4 mt-4 border-t border-outline-variant pt-6">
+<label class="text-sm font-bold text-on-surface-variant font-label">¿Posee Beneficiarios (cargas)?</label>
+<div class="flex items-center gap-6 py-2">
+<label class="inline-flex items-center cursor-pointer group">
+<input class="sr-only peer" name="beneficiarios" onchange="document.getElementById('charges-fields').classList.toggle('hidden', false)" type="radio" value="si"/>
+<div class="w-12 h-6 bg-slate-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-primary/20 rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary relative"></div>
+<span class="ms-3 text-sm font-medium text-on-surface">SÍ</span>
+</label>
+<label class="inline-flex items-center cursor-pointer group">
+<input checked="" class="sr-only peer" name="beneficiarios" onchange="document.getElementById('charges-fields').classList.toggle('hidden', true)" type="radio" value="no"/>
+<div class="w-12 h-6 bg-slate-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-primary/20 rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary relative"></div>
+<span class="ms-3 text-sm font-medium text-on-surface">NO</span>
+</label>
+</div>
+<!-- Conditional Fields -->
+<div class="hidden space-y-6 pt-4 animate-in fade-in duration-300" id="charges-fields">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div class="flex flex-col gap-2">
+<label class="text-sm font-bold text-on-surface-variant font-label" for="rut_carga">RUT Carga</label>
+<input class="bg-surface-bright border border-outline-variant rounded-lg px-4 py-3 text-on-surface input-focus-ring transition-all" id="rut_carga" placeholder="12.345.678-9" type="text"/>
+</div>
+<div class="flex flex-col gap-2">
+<label class="text-sm font-bold text-on-surface-variant font-label" for="edad_carga">Edad Carga</label>
+<input class="bg-surface-bright border border-outline-variant rounded-lg px-4 py-3 text-on-surface input-focus-ring transition-all" id="edad_carga" placeholder="Ej: 8" type="number"/>
+</div>
+</div>
+<button class="inline-flex items-center gap-2 text-primary font-bold text-sm hover:underline" type="button">
+<span class="material-symbols-outlined text-lg" data-icon="add">add</span>
+                                Agregar Carga
+                            </button>
+</div>
+</div>
+</div>
+<!-- CTA Button -->
+<div class="mt-12">
+<button class="w-full bg-primary text-on-primary py-5 rounded-xl font-headline font-extrabold text-xl shadow-lg hover:brightness-110 active:scale-[0.98] transition-all flex items-center justify-center gap-3" type="submit">
+                        Enviar Solicitud de Cotización
+                        <span class="material-symbols-outlined" data-icon="send">send</span>
+</button>
+<p class="text-center text-xs text-on-surface-variant mt-4">Sus datos están protegidos por nuestras políticas de privacidad.</p>
+</div>
+</form>
+</div>
+</div>
+</section>
+<!-- Quiénes Somos Section -->
+<section class="py-20 bg-white" id="quienes-somos">
+<div class="max-w-7xl mx-auto px-8">
+<div class="flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
+<!-- Image Container (On the left) -->
+<div class="lg:w-1/2 w-full">
+<div class="relative rounded-2xl overflow-hidden shadow-2xl transform lg:-rotate-2 hover:rotate-0 transition-transform duration-500">
+<img alt="Equipo de asesoría" class="w-full h-auto object-cover" src="https://lh3.googleusercontent.com/aida/ADBb0uh88QNStGEGtNXgKr9QzNoxlwQAzpv07FIwlZYhEYCImtGuK_gLGlp8zSMSm94_4CuKATn266ivmDlDdpczcsFOvHxnvhu5m6NwyVXhWrjvpbNG9PHKsMVTZdc_fU7N2-3jYa4dpBHSxgogNJHd2ejIh6LGR7SOrazLJh0Nz44XIllS1sD_lLFOiGTRtUCBAGV5luuxRRwyaq9q6_VSk8mB7ub19DOA0rMLlMIr2mTml2kINzJmAG4zePvUbHbm4M_rVitb5dzw0vw"/>
+<div class="absolute inset-0 border-8 border-primary/10 rounded-2xl pointer-events-none"></div>
+</div>
+</div>
+<!-- Text Content (On the right) -->
+<div class="lg:w-1/2">
+<h2 class="font-headline text-4xl md:text-5xl font-extrabold text-on-surface mb-6 leading-tight">
+                    Quiénes Somos
+                </h2>
+<div class="w-16 h-1.5 bg-primary rounded-full mb-8"></div>
+<div class="space-y-6 text-on-surface-variant text-lg leading-relaxed">
+<p>Somos un equipo de asesores especializados en sistemas de salud, enfocados en entregar una asesoría gratuita, clara y personalizada, optimizando tu 7% de cotización obligatoria, mejorando tu cobertura y acceso a clínicas y centros médicos. Trabajamos con las principales Isapres del país, lo que nos permite comparar objetivamente y recomendar los planes que mejor se adaptan a tu realidad y la de tu familia.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Peace of Mind Section -->
+<section class="py-20 bg-surface-container-highest">
+<div class="max-w-7xl mx-auto px-8">
+<div class="flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
+<!-- Text Content -->
+<div class="lg:w-1/2 order-2 lg:order-1">
+<div class="bg-secondary-container/20 border-l-4 border-secondary p-8 rounded-r-2xl">
+<p class="font-headline text-2xl md:text-3xl font-bold text-on-surface leading-snug">
+                        Tomar una buena decisión en tu plan de salud puede ahorrarte miles de pesos al año y darte tranquilidad en momentos importantes.
+                    </p>
+</div>
+</div>
+<!-- Image Container -->
+<div class="lg:w-1/2 order-1 lg:order-2">
+<div class="rounded-2xl overflow-hidden shadow-xl ring-1 ring-black/5">
+<img alt="Banner Cesantía" class="w-full h-auto object-cover" src="https://lh3.googleusercontent.com/aida/ADBb0ugoigTNtTxMQdHCR8d71_lm8veWCx9eRAvM0psROt6gmQOG0U0GeL245jyIqQvsR48MJVZ0dROpovgKPZE7ZkRVOSyjgbILPhyeIgd4nzlVQVjvPx7a4QOErQIJqb-hN2pMZoA7jPuCrrpKXfMQh0cnZVTdNRbpDZ0plFX3SZQBp4plRfP_PAqkAIeGPJ2YzRutZANnCihtHeG9odsirda5a0durjvyreaZv_rmumVyr2Mt5QD2TNytMAdURpHA-Nb6FArn_1zxtfI"/>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Comparison Table Section -->
+<section class="py-24 bg-white" id="comparativa">
+<div class="max-w-7xl mx-auto px-8">
+<div class="text-center mb-16">
+<h2 class="font-headline text-4xl md:text-5xl font-extrabold text-on-surface mb-4">
+                FONASA vs ISAPRE
+            </h2>
+<p class="text-on-surface-variant text-lg">Entiende las diferencias clave para elegir lo mejor para ti.</p>
+<div class="w-24 h-1.5 bg-primary mx-auto mt-6 rounded-full"></div>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+<!-- FONASA Card -->
+<div class="bg-surface-container-low rounded-3xl p-8 border border-outline-variant/30 flex flex-col">
+<div class="flex items-center gap-4 mb-8">
+<div class="w-12 h-12 bg-slate-400 rounded-2xl flex items-center justify-center text-white">
+<span class="material-symbols-outlined text-3xl" data-icon="account_balance">account_balance</span>
+</div>
+<div>
+<h3 class="font-headline text-3xl font-black text-slate-700">FONASA</h3>
+<p class="text-slate-500 font-medium">Fondo Nacional de Salud</p>
+</div>
+</div>
+<ul class="space-y-6 flex-grow">
+<li class="flex gap-4">
+<span class="material-symbols-outlined text-primary mt-0.5 shrink-0" data-icon="payments">payments</span>
+<p class="text-on-surface-variant leading-tight">Pagas solo el 7% de tu renta independiente de la cantidad de beneficiarios.</p>
+</li>
+<li class="flex gap-4">
+<span class="material-symbols-outlined text-error mt-0.5 shrink-0" data-icon="schedule">schedule</span>
+<p class="text-on-surface-variant leading-tight">Atención lenta y largas listas de espera.</p>
+</li>
+<li class="flex gap-4">
+<span class="material-symbols-outlined text-slate-400 mt-0.5 shrink-0" data-icon="domain_disabled">domain_disabled</span>
+<p class="text-on-surface-variant leading-tight">Cobertura mínima en servicios privados.</p>
+</li>
+<li class="flex gap-4">
+<span class="material-symbols-outlined text-primary mt-0.5 shrink-0" data-icon="apartment">apartment</span>
+<p class="text-on-surface-variant leading-tight">Atención en hospitales públicos.</p>
+</li>
+<li class="flex gap-4">
+<span class="material-symbols-outlined text-slate-400 mt-0.5 shrink-0" data-icon="bed">bed</span>
+<p class="text-on-surface-variant leading-tight">Condiciones hospitalarias de baja comodidad.</p>
+</li>
+<li class="flex gap-4">
+<span class="material-symbols-outlined text-slate-400 mt-0.5 shrink-0" data-icon="list_alt">list_alt</span>
+<p class="text-on-surface-variant leading-tight">No existen planes personalizados solo tramos A, B, C y D.</p>
+</li>
+<li class="flex gap-4 p-4 bg-white/50 rounded-xl border border-white">
+<span class="material-symbols-outlined text-primary shrink-0" data-icon="info">info</span>
+<p class="text-on-surface-variant text-sm font-medium italic">Ideal para personas de bajos recursos, con grupos familiares grandes y que prefieran la red pública de atención.</p>
+</li>
+</ul>
+</div>
+<!-- ISAPRE Card -->
+<div class="bg-primary-container/10 rounded-3xl p-8 border border-primary/20 flex flex-col relative overflow-hidden">
+<div class="absolute top-0 right-0 bg-primary text-white px-6 py-2 rounded-bl-3xl font-bold text-sm tracking-tight">
+                    RECOMENDADO
+                </div>
+<div class="flex items-center gap-4 mb-8">
+<div class="w-12 h-12 bg-primary rounded-2xl flex items-center justify-center text-white">
+<span class="material-symbols-outlined text-3xl" data-icon="verified_user">verified_user</span>
+</div>
+<div>
+<h3 class="font-headline text-3xl font-black text-primary">ISAPRE</h3>
+<p class="text-primary/70 font-medium">Instituciones de Salud Previsional</p>
+</div>
+</div>
+<ul class="space-y-6 flex-grow">
+<li class="flex gap-4">
+<span class="material-symbols-outlined text-primary mt-0.5 shrink-0" data-icon="wallet">wallet</span>
+<p class="text-on-surface-variant leading-tight">El plan se paga por beneficiario, puede ser mayor que tu 7%.</p>
+</li>
+<li class="flex gap-4">
+<span class="material-symbols-outlined text-secondary mt-0.5 shrink-0" data-icon="bolt">bolt</span>
+<p class="text-on-surface-variant leading-tight">Atención rápida y excelente servicio.</p>
+</li>
+<li class="flex gap-4">
+<span class="material-symbols-outlined text-secondary mt-0.5 shrink-0" data-icon="local_hospital">local_hospital</span>
+<p class="text-on-surface-variant leading-tight">Excelente cobertura en servicios privados de salud.</p>
+</li>
+<li class="flex gap-4">
+<span class="material-symbols-outlined text-secondary mt-0.5 shrink-0" data-icon="hub">hub</span>
+<p class="text-on-surface-variant leading-tight">Amplia red de prestadores privados.</p>
+</li>
+<li class="flex gap-4">
+<span class="material-symbols-outlined text-secondary mt-0.5 shrink-0" data-icon="hotel">hotel</span>
+<p class="text-on-surface-variant leading-tight">Condiciones Hospitalarias de excelencia hotelera.</p>
+</li>
+<li class="flex gap-4">
+<span class="material-symbols-outlined text-secondary mt-0.5 shrink-0" data-icon="person_add">person_add</span>
+<p class="text-on-surface-variant leading-tight">Planes personalizados para cada usuario según sus necesidades.</p>
+</li>
+<li class="flex gap-4 p-4 bg-white/50 rounded-xl border border-primary/10">
+<span class="material-symbols-outlined text-secondary shrink-0" data-icon="stars">stars</span>
+<p class="text-on-surface-variant text-sm font-medium italic">Ideal para personas con ingresos medio-alto, que deseen atención rápida de calidad y en las mejores clínicas.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+<!-- Why Choose Our Advisory Section -->
+<section class="py-24 bg-surface-container-low" id="beneficios">
+<div class="max-w-7xl mx-auto px-8">
+<div class="flex flex-col lg:flex-row items-center gap-16">
+<!-- Image side -->
+<div class="lg:w-1/2 w-full order-2 lg:order-1">
+<div class="relative">
+<div class="absolute -inset-4 bg-primary/5 rounded-3xl -rotate-2"></div>
+<img alt="Manos protegiendo a la familia" class="relative z-10 w-full h-auto rounded-2xl shadow-2xl object-cover aspect-[4/3]" src="https://lh3.googleusercontent.com/aida/ADBb0uh36SPzPZXnIVJrWfXLXMxQxM4OG1aqCy9m94m6Du_GYifNEJyIni7wNPNeNv-Nt-gRvXRg1Q8AaZzoKZk2zrau2TdoZLuDOfV2beP_LRnhnoZfpbca7Qzb-CRhH8VI011tHdszPArTuALnhDlcqn1zPxuM8Vuw0K5l2Q00CwJmIWP3haLKAAqYAcM3X3sURzaa5q6TLSKFa9hfSC48381XmlrhyeKwYEwWn-QlRNurTcmXu8UNh6y-Xj_gerDXdZbEJCwScJFrfg"/>
+<div class="absolute -bottom-6 -right-6 bg-secondary-container p-6 rounded-2xl shadow-lg z-20 hidden md:block">
+<span class="material-symbols-outlined text-on-secondary-container text-4xl" data-icon="health_and_safety">health_and_safety</span>
+</div>
+</div>
+</div>
+<!-- Content side -->
+<div class="lg:w-1/2 w-full order-1 lg:order-2">
+<div class="inline-flex items-center gap-2 bg-primary/10 text-primary px-4 py-1 rounded-full mb-6">
+<span class="text-xs font-bold uppercase tracking-widest font-label">Nuestros Diferenciales</span>
+</div>
+<h2 class="font-headline text-4xl md:text-5xl font-extrabold text-on-surface mb-8 leading-tight">
+                    ¿Por qué elegir nuestra asesoría?
+                </h2>
+<div class="space-y-4">
+<div class="flex items-start gap-4 p-4 hover:bg-white rounded-xl transition-colors group">
+<div class="bg-primary/10 p-2 rounded-lg group-hover:bg-primary group-hover:text-white transition-colors">
+<span class="material-symbols-outlined text-2xl leading-none" data-icon="check_circle">check_circle</span>
+</div>
+<div>
+<h4 class="font-bold text-on-surface">Asesoría personalizada y gratuita</h4>
+<p class="text-on-surface-variant text-sm">Adaptamos cada recomendación a tu perfil específico sin costo para ti.</p>
+</div>
+</div>
+<div class="flex items-start gap-4 p-4 hover:bg-white rounded-xl transition-colors group">
+<div class="bg-primary/10 p-2 rounded-lg group-hover:bg-primary group-hover:text-white transition-colors">
+<span class="material-symbols-outlined text-2xl leading-none" data-icon="analytics">analytics</span>
+</div>
+<div>
+<h4 class="font-bold text-on-surface">Comparación de planes objetivamente</h4>
+<p class="text-on-surface-variant text-sm">Analizamos todo el mercado para encontrar el beneficio real.</p>
+</div>
+</div>
+<div class="flex items-start gap-4 p-4 hover:bg-white rounded-xl transition-colors group">
+<div class="bg-primary/10 p-2 rounded-lg group-hover:bg-primary group-hover:text-white transition-colors">
+<span class="material-symbols-outlined text-2xl leading-none" data-icon="psychology">psychology</span>
+</div>
+<div>
+<h4 class="font-bold text-on-surface">Simplificación de la información</h4>
+<p class="text-on-surface-variant text-sm">Traducimos términos técnicos a beneficios concretos para ti.</p>
+</div>
+</div>
+<div class="flex items-start gap-4 p-4 hover:bg-white rounded-xl transition-colors group">
+<div class="bg-primary/10 p-2 rounded-lg group-hover:bg-primary group-hover:text-white transition-colors">
+<span class="material-symbols-outlined text-2xl leading-none" data-icon="add_moderator">add_moderator</span>
+</div>
+<div>
+<h4 class="font-bold text-on-surface">Identificación de beneficios adicionales</h4>
+<p class="text-on-surface-variant text-sm">Encontramos coberturas que no sabías que podías tener.</p>
+</div>
+</div>
+<div class="flex items-start gap-4 p-4 hover:bg-white rounded-xl transition-colors group">
+<div class="bg-primary/10 p-2 rounded-lg group-hover:bg-primary group-hover:text-white transition-colors">
+<span class="material-symbols-outlined text-2xl leading-none" data-icon="savings">savings</span>
+</div>
+<div>
+<h4 class="font-bold text-on-surface">Ahorrar tiempo y dinero</h4>
+<p class="text-on-surface-variant text-sm">Optimizamos tu 7% para que rinda al máximo.</p>
+</div>
+</div>
+<div class="flex items-start gap-4 p-4 hover:bg-white rounded-xl transition-colors group">
+<div class="bg-primary/10 p-2 rounded-lg group-hover:bg-primary group-hover:text-white transition-colors">
+<span class="material-symbols-outlined text-2xl leading-none" data-icon="volunteer_activism">volunteer_activism</span>
+</div>
+<div>
+<h4 class="font-bold text-on-surface">Sentirte escuchado y acompañado</h4>
+<p class="text-on-surface-variant text-sm">Estamos contigo en cada paso del proceso de selección.</p>
+</div>
+</div>
+<div class="flex items-start gap-4 p-4 hover:bg-white rounded-xl transition-colors group">
+<div class="bg-primary/10 p-2 rounded-lg group-hover:bg-primary group-hover:text-white transition-colors">
+<span class="material-symbols-outlined text-2xl leading-none" data-icon="bolt">bolt</span>
+</div>
+<div>
+<h4 class="font-bold text-on-surface">Proceso sea rápido y eficiente</h4>
+<p class="text-on-surface-variant text-sm">Gestionamos todo con agilidad para tu comodidad.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- FAQ Section -->
+<section class="py-24 bg-white" id="faq">
+<div class="max-w-4xl mx-auto px-8">
+<div class="text-center mb-16">
+<h2 class="font-headline text-4xl md:text-5xl font-extrabold text-on-surface mb-4">
+                Preguntas Frecuentes
+            </h2>
+<div class="w-16 h-1.5 bg-primary mx-auto rounded-full"></div>
+</div>
+<div class="space-y-4">
+<details class="faq-accordion group border border-outline-variant rounded-xl overflow-hidden transition-all duration-300">
+<summary class="flex justify-between items-center p-6 cursor-pointer bg-white hover:bg-surface-container-lowest list-none">
+<span class="font-bold text-on-surface">¿Cómo acceder al servicio?</span>
+<span class="material-symbols-outlined faq-icon transition-transform duration-300 text-primary">expand_more</span>
+</summary>
+<div class="px-6 pb-6 text-on-surface-variant text-sm leading-relaxed">
+<ol class="list-decimal list-inside space-y-2">
+<li>Completa el formulario en línea.</li>
+<li>Un asesor experto te contactará.</li>
+<li>Recibe y compara las mejores ofertas personalizadas.</li>
+<li>¡Tú decides el plan que mejor te convenga!</li>
+</ol>
+</div>
+</details>
+<details class="faq-accordion group border border-outline-variant rounded-xl overflow-hidden transition-all duration-300">
+<summary class="flex justify-between items-center p-6 cursor-pointer bg-white hover:bg-surface-container-lowest list-none">
+<span class="font-bold text-on-surface">¿Debo cambiarme de Isapre si recibo la asesoría?</span>
+<span class="material-symbols-outlined faq-icon transition-transform duration-300 text-primary">expand_more</span>
+</summary>
+<div class="px-6 pb-6 text-on-surface-variant text-sm leading-relaxed">
+                    No es obligatorio. Nuestros asesores te guiarán de manera honesta; si tu plan actual es el mejor para tu situación, te recomendaremos mantenerlo.
+                </div>
+</details>
+<details class="faq-accordion group border border-outline-variant rounded-xl overflow-hidden transition-all duration-300">
+<summary class="flex justify-between items-center p-6 cursor-pointer bg-white hover:bg-surface-container-lowest list-none">
+<span class="font-bold text-on-surface">¿Es necesario entregar toda la información solicitada en el formulario?</span>
+<span class="material-symbols-outlined faq-icon transition-transform duration-300 text-primary">expand_more</span>
+</summary>
+<div class="px-6 pb-6 text-on-surface-variant text-sm leading-relaxed">
+                    Idealmente sí. Cuantos más datos proporcionciones, más precisa y personalizada podrá ser la comparación de planes que realice nuestro equipo.
+                </div>
+</details>
+<details class="faq-accordion group border border-outline-variant rounded-xl overflow-hidden transition-all duration-300">
+<summary class="flex justify-between items-center p-6 cursor-pointer bg-white hover:bg-surface-container-lowest list-none">
+<span class="font-bold text-on-surface">¿Aún existen los planes compensados y como funcionan?</span>
+<span class="material-symbols-outlined faq-icon transition-transform duration-300 text-primary">expand_more</span>
+</summary>
+<div class="px-6 pb-6 text-on-surface-variant text-sm leading-relaxed">
+                    Sí, todavía existen. Funcionan permitiendo que un cotizante ayude a otro con su excedente del 7% legal para cubrir el costo de un plan conjunto o familiar, optimizando los recursos de ambos.
+                </div>
+</details>
+<details class="faq-accordion group border border-outline-variant rounded-xl overflow-hidden transition-all duration-300">
+<summary class="flex justify-between items-center p-6 cursor-pointer bg-white hover:bg-surface-container-lowest list-none">
+<span class="font-bold text-on-surface">¿Qué sucede si tengo enfermedades preexistentes?</span>
+<span class="material-symbols-outlined faq-icon transition-transform duration-300 text-primary">expand_more</span>
+</summary>
+<div class="px-6 pb-6 text-on-surface-variant text-sm leading-relaxed">
+                    Depende del diagnóstico. Algunas condiciones deben ser declaradas obligatoriamente (como hipertensión o cirugías recientes), mientras que otras tienen normativas específicas (como salud mental o cáncer después de 5 años de remisión). Te asesoramos para que tu declaración sea correcta.
+                </div>
+</details>
+<details class="faq-accordion group border border-outline-variant rounded-xl overflow-hidden transition-all duration-300">
+<summary class="flex justify-between items-center p-6 cursor-pointer bg-white hover:bg-surface-container-lowest list-none">
+<span class="font-bold text-on-surface">¿Qué es el GES o AUGE?</span>
+<span class="material-symbols-outlined faq-icon transition-transform duration-300 text-primary">expand_more</span>
+</summary>
+<div class="px-6 pb-6 text-on-surface-variant text-sm leading-relaxed">
+                    Es un conjunto de beneficios garantizados por ley para diagnósticos priorizados. Asegura acceso, oportunidad de atención, calidad y protección financiera para los pacientes.
+                </div>
+</details>
+<details class="faq-accordion group border border-outline-variant rounded-xl overflow-hidden transition-all duration-300">
+<summary class="flex justify-between items-center p-6 cursor-pointer bg-white hover:bg-surface-container-lowest list-none">
+<span class="font-bold text-on-surface">¿Qué es el CAEC?</span>
+<span class="material-symbols-outlined faq-icon transition-transform duration-300 text-primary">expand_more</span>
+</summary>
+<div class="px-6 pb-6 text-on-surface-variant text-sm leading-relaxed">
+                    Es la Cobertura Adicional para Enfermedades Catastróficas. Es un beneficio obligatorio que ayuda a financiar enfermedades de alto costo una vez que se ha superado un deducible determinado.
+                </div>
+</details>
+</div>
+</div>
+</section>
+<!-- Footer -->
+<footer class="bg-slate-50 w-full pt-20 pb-12">
+<div class="max-w-7xl mx-auto px-8 flex flex-col md:flex-row justify-between items-center gap-6">
+<div class="flex items-center gap-2 cursor-pointer" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
+<span class="material-symbols-outlined text-primary" data-icon="clinical_notes">clinical_notes</span>
+<span class="text-lg font-bold text-primary font-headline">Editorial Assurance</span>
+</div>
+<div class="flex flex-wrap justify-center gap-8 text-sm font-medium">
+<a class="text-slate-500 hover:underline decoration-primary underline-offset-4 transition-all duration-300" href="#">Privacy Policy</a>
+<a class="text-slate-500 hover:underline decoration-primary underline-offset-4 transition-all duration-300" href="#">Terms of Service</a>
+<a class="text-slate-500 hover:underline decoration-primary underline-offset-4 transition-all duration-300" href="#">Advisory Board</a>
+<a class="text-slate-500 hover:underline decoration-primary underline-offset-4 transition-all duration-300" href="#">Contact</a>
+</div>
+<p class="text-slate-500 text-sm">
+            © 2024 Editorial Assurance Advisory. All rights reserved.
+        </p>
+</div>
+</footer>
+</body></html>

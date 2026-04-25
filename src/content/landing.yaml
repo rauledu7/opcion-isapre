@@ -1,0 +1,133 @@
+siteName: Tu Opcion Isapre
+headerCta: Cotizar Ahora
+hero:
+  badge: Asesoria de Confianza
+  title: Tu Opcion Isapre para cuidar lo que mas importa
+  description: >-
+    Comparamos planes de salud con enfoque claro, humano y profesional para
+    optimizar tu 7% con cobertura real.
+  primaryCta: Quiero mi asesoria
+  secondaryCta: Conocer equipo
+  image: /images/hero/image.png
+partnersTitle: Trabajamos con las mejores Isapres de Chile
+partners:
+  - name: Colmena
+    logo: /images/partners/0/logo.png
+  - name: Vida Tres
+    logo: /images/partners/1/logo.png
+  - name: Cruz Blanca
+    logo: /images/partners/2/logo.png
+  - name: Banmedica
+    logo: /images/partners/3/logo.png
+  - name: Consalud
+    logo: /images/partners/4/logo.png
+  - name: Esencial
+    logo: /images/partners/5/logo.png
+  - name: Nueva Mas Vida
+    logo: /images/partners/6/logo.png
+quote:
+  title: Cotiza tu Plan Ideal en Minutos
+  subtitle: Completa el formulario y un asesor experto se pondra en contacto contigo.
+  submitText: Enviar Solicitud de Cotizacion
+  privacyText: Sus datos estan protegidos por nuestras politicas de privacidad.
+about:
+  title: Quienes Somos
+  paragraphOne: >-
+    Somos un equipo de asesores especializados en sistemas de salud, enfocados
+    en entregar una asesoria gratuita, clara y personalizada, optimizando tu 7%
+    de cotizacion obligatoria, mejorando tu cobertura y acceso a clinicas y
+    centros medicos.
+  paragraphTwo: >-
+    Trabajamos con las principales Isapres del pais, lo que nos permite comparar
+    objetivamente y recomendar los planes que mejor se adaptan a tu realidad y
+    la de tu familia.
+promoText: >-
+  Tomar una buena decision en tu plan de salud puede ahorrarte miles de pesos al
+  anio y darte tranquilidad en momentos importantes.
+comparison:
+  title: FONASA vs ISAPRE
+  subtitle: Entiende las diferencias clave para elegir lo mejor para ti.
+  fonasaTitle: FONASA
+  fonasaSubtitle: Fondo Nacional de Salud
+  isapreTitle: ISAPRE
+  isapreSubtitle: Instituciones de Salud Previsional
+  fonasaItems:
+    - icon: payments
+      text: >-
+        Pagas solo el 7% de tu renta independiente de la cantidad de
+        beneficiarios.
+    - icon: schedule
+      text: Atencion lenta y largas listas de espera.
+    - icon: domain_disabled
+      text: Cobertura minima en servicios privados.
+    - icon: apartment
+      text: Atencion en hospitales publicos.
+    - icon: bed
+      text: Condiciones hospitalarias de baja comodidad.
+    - icon: list_alt
+      text: No existen planes personalizados solo tramos A, B, C y D.
+    - icon: info
+      text: >-
+        Ideal para personas de bajos recursos, con grupos familiares grandes y
+        que prefieran la red publica de atencion.
+  isapreItems:
+    - icon: wallet
+      text: El plan se paga por beneficiario, puede ser mayor que tu 7%.
+    - icon: bolt
+      text: Atencion rapida y excelente servicio.
+    - icon: local_hospital
+      text: Excelente cobertura en servicios privados de salud.
+    - icon: hub
+      text: Amplia red de prestadores privados.
+    - icon: hotel
+      text: Condiciones Hospitalarias de excelencia hotelera.
+    - icon: person_add
+      text: Planes personalizados para cada usuario segun sus necesidades.
+    - icon: stars
+      text: >-
+        Ideal para personas con ingresos medio-alto, que deseen atencion rapida
+        de calidad y en las mejores clinicas.
+benefits:
+  badge: Nuestros Diferenciales
+  title: Por que elegir nuestra asesoria?
+  items:
+    - icon: check_circle
+      title: Asesoria personalizada y gratuita
+      description: Adaptamos cada recomendacion a tu perfil especifico sin costo para ti.
+    - icon: analytics
+      title: Comparacion de planes objetivamente
+      description: Analizamos todo el mercado para encontrar el beneficio real.
+    - icon: psychology
+      title: Simplificacion de la informacion
+      description: Traducimos terminos tecnicos a beneficios concretos para ti.
+    - icon: add_moderator
+      title: Identificacion de beneficios adicionales
+      description: Encontramos coberturas que no sabias que podias tener.
+    - icon: savings
+      title: Ahorrar tiempo y dinero
+      description: Optimizamos tu 7% para que rinda al maximo.
+    - icon: volunteer_activism
+      title: Sentirte escuchado y acompanado
+      description: Estamos contigo en cada paso del proceso de seleccion.
+    - icon: bolt
+      title: Proceso rapido y eficiente
+      description: Gestionamos todo con agilidad para tu comodidad.
+faqTitle: Preguntas Frecuentes
+faqs:
+  - question: Como acceder al servicio?
+    answer: >-
+      Completa el formulario en linea, un asesor experto te contactara y
+      recibiras ofertas personalizadas para comparar.
+  - question: Debo cambiarme de Isapre si recibo asesoria?
+    answer: >-
+      No es obligatorio. Si tu plan actual es el mejor para tu situacion, te
+      recomendaremos mantenerlo.
+  - question: Que sucede si tengo enfermedades preexistentes?
+    answer: >-
+      Depende del diagnostico. Te asesoramos para declarar correctamente y
+      evaluar alternativas viables.
+footer:
+  description: Asesoria editorial en planes de salud.
+  linkInicio: Inicio
+  linkCotizar: Cotizar
+  linkFaq: FAQ

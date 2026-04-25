@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+
+<html class="light" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Editorial Assurance - Tu Opción Isapre</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&amp;family=Inter:wght@400;500;600&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+              "primary": "#005EB8",
+              "on-primary": "#ffffff",
+              "primary-container": "#d6e3ff",
+              "on-primary-container": "#001b3d",
+              "secondary": "#006879",
+              "on-secondary": "#ffffff",
+              "secondary-container": "#7de6ff",
+              "on-secondary-container": "#001f26",
+              "tertiary": "#344a5a",
+              "on-tertiary": "#ffffff",
+              "tertiary-container": "#cee5f9",
+              "on-tertiary-container": "#051e2c",
+              "error": "#ba1a1a",
+              "on-error": "#ffffff",
+              "background": "#f7f9fb",
+              "on-background": "#191c1e",
+              "surface": "#f7f9fb",
+              "on-surface": "#191c1e",
+              "surface-variant": "#e0e3e5",
+              "on-surface-variant": "#424752",
+              "outline": "#727783",
+              "surface-container-low": "#f2f4f6",
+              "surface-container": "#eceef0",
+              "surface-container-high": "#e6e8ea",
+              "surface-container-highest": "#e0e3e5"
+            },
+            "borderRadius": {
+              "DEFAULT": "8px",
+              "lg": "12px",
+              "xl": "16px",
+              "full": "9999px"
+            },
+            "fontFamily": {
+              "headline": ["Manrope"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        html {
+            scroll-behavior: smooth;
+        }
+        details > summary {
+            list-style: none;
+        }
+        details > summary::-webkit-details-marker {
+            display: none;
+        }
+        /* Simple toggle logic for beneficiaries via CSS peer-checked */
+        #has-beneficiaries:checked ~ .beneficiaries-content {
+            display: block;
+        }
+        .beneficiaries-content {
+            display: none;
+        }
+    </style>
+</head>
+<body class="bg-surface font-body text-on-surface overflow-x-hidden" id="inicio">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-white/80 backdrop-blur-xl border-b border-surface-container flex justify-between items-center px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="relative group">
+<span class="material-symbols-outlined text-primary cursor-pointer">menu</span>
+<div class="absolute left-0 top-full mt-2 w-48 bg-white border border-surface-container-highest rounded-lg shadow-2xl py-2 hidden group-hover:block">
+<a class="block px-4 py-2 text-sm font-bold text-on-surface hover:bg-primary-container/20" href="#inicio">Inicio</a>
+<a class="block px-4 py-2 text-sm font-bold text-on-surface hover:bg-primary-container/20" href="#quienes-somos">Quiénes Somos</a>
+<a class="block px-4 py-2 text-sm font-bold text-on-surface hover:bg-primary-container/20" href="#comparativa">Fonasa vs Isapre</a>
+<a class="block px-4 py-2 text-sm font-bold text-on-surface hover:bg-primary-container/20" href="#cotizar">Cotizar</a>
+<a class="block px-4 py-2 text-sm font-bold text-on-surface hover:bg-primary-container/20" href="#faq">Preguntas Frecuentes</a>
+</div>
+</div>
+<h1 class="text-lg font-extrabold text-primary tracking-tight font-headline">Editorial Assurance</h1>
+</div>
+<div class="w-10 h-10 rounded-full border-2 border-primary/10 overflow-hidden">
+<img alt="Advisor" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD0VzrZSWLuo4BrGt41WW1NKLZCvI65QS-DkD4LEEJJWLD8BRZ9fh1ezgjKN_qyG1ZatBZRty5Kc7wjYn6lOZeBtR9E1istjMZcFDxzkyJlwvyKPJfAd4Br2BemxaglfUU_EJAFXLAZ8JB_Ca2h0b_wkLPjCeycSthB-97zZBjmIB5jJ4oRGjl674YfsFyTiT2dWc7vw3-DGu5pOXRiXUWYv530JAGXjH8_9JRyYeGMAQ2UfJRzG0a1KsdhvsyghQHJ8fkoAKdybMc"/>
+</div>
+</header>
+<main class="pt-16 pb-24">
+<!-- Hero Section -->
+<section class="relative h-[85vh] min-h-[600px] flex flex-col justify-end px-6 pb-16 overflow-hidden">
+<div class="absolute inset-0 z-0">
+<img alt="Familia Feliz" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida/ADBb0ujvHaxRdFF-5V3R3KJfrazchMTjila4XXlhW3P5jzl6ZwdQPSS7xlojW7tTiqu44timdxEHLyVLwNHWhjZTuumkPkuCq8cpCnEbedjzoOCXPMxcWvzvK-M-1keY9G7i61gJCaXXmvoJntUWQZDP4jy0bdmDz-db7e-iUX6IlUqA-Iffxm3WbkgtbYH7jYwHzEcmBGw5oFsUvdafrh9CQd3nXpE_TV8lMYPkvrQKBVQEP0Kukt3GRp_-2dC0HqB0N17eEbUPzrlhxW4"/>
+<div class="absolute inset-0 bg-gradient-to-t from-primary/95 via-primary/40 to-transparent"></div>
+</div>
+<div class="relative z-10 space-y-6">
+<div class="inline-block px-4 py-1.5 bg-secondary-container text-on-secondary-container rounded-full text-[10px] font-extrabold tracking-[0.2em] uppercase font-label">
+                    Especialistas en Salud
+                </div>
+<h2 class="text-5xl font-extrabold text-white font-headline leading-[1.1] tracking-tighter">
+                    Tu Opción Isapre
+                </h2>
+<p class="text-white/90 text-lg font-medium leading-relaxed max-w-[280px]">
+                    Tu mejor opción en planes de salud. Te ofrecemos los mejores beneficios para proteger lo que más importa.
+                </p>
+<div class="flex flex-col gap-3 pt-4">
+<a class="bg-white text-primary font-extrabold py-4 px-8 rounded-lg shadow-xl active:scale-[0.98] transition-transform flex items-center justify-center gap-2" href="#cotizar">
+                        Cotizar Ahora
+                        <span class="material-symbols-outlined font-bold">arrow_forward</span>
+</a>
+<button class="bg-white/10 backdrop-blur-md border border-white/30 text-white font-bold py-4 px-8 rounded-lg active:scale-[0.98] transition-transform flex items-center justify-center gap-2">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">chat</span>
+                        Contáctanos por WhatsApp
+                    </button>
+</div>
+</div>
+</section>
+<!-- Logo Slider Section -->
+<section class="py-10 bg-surface-container-low border-b border-surface-container">
+<div class="px-6 mb-6">
+<h3 class="text-[10px] font-extrabold text-primary tracking-[0.2em] uppercase font-label text-center">Trabajamos con las mejores Isapres de Chile</h3>
+</div>
+<div class="flex overflow-x-auto hide-scrollbar gap-8 px-6 items-center">
+<img alt="Banmedica" class="h-6 w-auto grayscale opacity-60 flex-shrink-0" src="https://lh3.googleusercontent.com/aida/ADBb0uj_Nyzmx9vcsTNLMXcWQn0lepMCZpPlxVoMIim5jQrfA4WUlBE0rgKAFqVx84LPxIUb26pCMdR0Ga5ioihGRf3qZD3MiRBi6aF-E34vhEbtvZTZOxpCdksYawUwfEpIuFX7rvvVSwikmAs7BYuoaHx-u0i3pnTlFcHZ3WYSjFi4LYqwFiaHSG9Ex9BMQsMTxICf9TlJbn4YPiIeSRhss7-UeNrcWwOG8SlGgguzKujVvehlY51YJAndKfZBexU1J-h8p3DPLij9dzU"/>
+<img alt="Consalud" class="h-6 w-auto grayscale opacity-60 flex-shrink-0" src="https://lh3.googleusercontent.com/aida/ADBb0ujCsa-2_PYuX3yc-XLRuKuI_sjhamn2usopqS5nDquhHGDcBf9sl0IO4Pp8KS18YkYKJMeny9oI1Fd2m-5B2BO7pYgJ1btV-zjIM988NiqujzpNqZFNYPJXYpvczVJ6oPJBUFiggqqbgWG9k68PHf42qP1BVpip0toOC0mD6xA9WLkOmMUV2g61dqfbr0nJN9Di2TE9IwKSge9-zzt0b5jBTigWat32II_17NRkS7NVKFfu15MVE8F5gb-yRwigAeWYtuVPPXW7i2Y"/>
+<img alt="Colmena" class="h-6 w-auto grayscale opacity-60 flex-shrink-0" src="https://lh3.googleusercontent.com/aida/ADBb0ug4jiEKHjxphusQ_Nc3Bzop-w9Pcekx6fYxh2ABSHwI_zbviQ0V_j3-aVaKUMGwxHBkyieJdrHFVzKimoOA64rWnw__lVBbNOmDb-a0NAyNFrl_yQ-q-Nu2sUomGiu5u7FwQEG5TVFU0L3BHo3DQ2ajhJm7VcicEpMkI9WdGW5hs1nFQ6yboPuleZpDXtH148cQsvtyzNl3f8z6KBrVbNojmE8xPXP4rMxtcrYJgnZJnaZ3JmcnimOeLR0geNCQQy546QblJ6dk0w"/>
+<img alt="Cruz Blanca" class="h-6 w-auto grayscale opacity-60 flex-shrink-0" src="https://lh3.googleusercontent.com/aida/ADBb0ujsxjewvrWsavfdAo8-PNOKriCDzztCpTW7OHZ95TdLulp83hzqyjn0bQ02VJeulus9EXTWjQWI7EITsh8IW7Ul3OqhXjF6EYsHLr4kv1atODmoxetzmWc95ANfKzc6-bZaXhDskJ9hcWShFhDrs1gp2dQckowoYBkcDPG5G_KXOBEIcx853B_L7KzJzAL0pgS8KqsCd6dlfbwJ7uAtAvkIibAw54u0-P6WLCRnH5icVyiUgGMOPuu1NiGkj3UBXQhyjKZBY_sYcQ"/>
+<img alt="Vida Tres" class="h-6 w-auto grayscale opacity-60 flex-shrink-0" src="https://lh3.googleusercontent.com/aida/ADBb0uiLHZeXuiE1Sn1wf0cPzlLO1UyiqVIgJ94eCEQMh6nFLB6CbiL2KvLiULxInizMOsduSxhCW0AA-urZEB6Tkr8Q4WSxDo4qwT2ypSVweWrWeEsy0_Xylp2Iy75unjHnuoZ2nRz6yVr7XkUHGAA2eP7_t2ERv0-LEHKbHcQ078KRVO_-fl7i0dQI9C1cAGspID_N4A2PKnqT0WF-CA55XfF9wgxgrSVqzM0_K8QhoUZcKz0K-vvq6zOWEi3aYMHz3SsCbN0wC_sdJw"/>
+</div>
+</section>
+<!-- Form Section -->
+<section class="py-16 px-6 bg-surface-container-low scroll-mt-20" id="cotizar">
+<div class="mb-10 text-center">
+<h3 class="text-3xl font-extrabold text-on-surface font-headline tracking-tight">Cotiza tu Plan Ideal en Minutos</h3>
+<div class="h-1.5 w-10 bg-primary mx-auto mt-4 rounded-full"></div>
+</div>
+<form class="space-y-5">
+<div class="space-y-1.5">
+<label class="text-[11px] font-extrabold text-on-surface-variant font-label uppercase tracking-wider px-1">Nombre Completo</label>
+<input class="w-full bg-white border-none rounded-lg p-4 focus:ring-2 focus:ring-primary transition-all text-on-surface placeholder:text-on-surface-variant/50 shadow-sm" placeholder="Ej: Juan Pérez" type="text"/>
+</div>
+<div class="space-y-1.5">
+<label class="text-[11px] font-extrabold text-on-surface-variant font-label uppercase tracking-wider px-1">RUT</label>
+<input class="w-full bg-white border-none rounded-lg p-4 focus:ring-2 focus:ring-primary transition-all text-on-surface shadow-sm" placeholder="12.345.678-9" type="text"/>
+</div>
+<div class="flex gap-4">
+<div class="w-1/2 space-y-1.5">
+<label class="text-[11px] font-extrabold text-on-surface-variant font-label uppercase tracking-wider px-1">Edad</label>
+<input class="w-full bg-white border-none rounded-lg p-4 focus:ring-2 focus:ring-primary transition-all text-on-surface shadow-sm" placeholder="0" type="number"/>
+</div>
+<div class="w-1/2 space-y-1.5">
+<label class="text-[11px] font-extrabold text-on-surface-variant font-label uppercase tracking-wider px-1">Renta Imponible</label>
+<div class="relative">
+<span class="absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant font-bold text-sm">$</span>
+<input class="w-full bg-white border-none rounded-lg p-4 pl-7 focus:ring-2 focus:ring-primary transition-all text-on-surface shadow-sm text-sm" placeholder="0" type="text"/>
+</div>
+</div>
+</div>
+<div class="space-y-1.5">
+<label class="text-[11px] font-extrabold text-on-surface-variant font-label uppercase tracking-wider px-1">Teléfono</label>
+<input class="w-full bg-white border-none rounded-lg p-4 focus:ring-2 focus:ring-primary transition-all text-on-surface shadow-sm" placeholder="+56 9..." type="tel"/>
+</div>
+<div class="space-y-1.5">
+<label class="text-[11px] font-extrabold text-on-surface-variant font-label uppercase tracking-wider px-1">Correo Electrónico</label>
+<input class="w-full bg-white border-none rounded-lg p-4 focus:ring-2 focus:ring-primary transition-all text-on-surface shadow-sm" placeholder="nombre@ejemplo.com" type="email"/>
+</div>
+<div class="space-y-1.5">
+<label class="text-[11px] font-extrabold text-on-surface-variant font-label uppercase tracking-wider px-1">Clínicas Preferentes</label>
+<input class="w-full bg-white border-none rounded-lg p-4 focus:ring-2 focus:ring-primary transition-all text-on-surface shadow-sm" placeholder="Ej: Clínica Alemana, Indisa..." type="text"/>
+</div>
+<div class="space-y-1.5">
+<label class="text-[11px] font-extrabold text-on-surface-variant font-label uppercase tracking-wider px-1">Previsión Actual</label>
+<select class="w-full bg-white border-none rounded-lg p-4 focus:ring-2 focus:ring-primary transition-all text-on-surface appearance-none shadow-sm">
+<option>Fonasa</option>
+<option>Isapre</option>
+<option>Ninguna</option>
+</select>
+</div>
+<!-- Beneficiarios Section (Moved to end) -->
+<div class="p-5 bg-white rounded-lg border border-surface-container-highest space-y-5 mt-4 shadow-sm relative">
+<div class="flex items-center justify-between">
+<h4 class="font-bold text-on-surface text-sm">¿Tienes Beneficiarios?</h4>
+<div class="flex bg-surface-container p-1 rounded-lg border border-outline/5 relative">
+<input class="hidden peer/si" id="has-beneficiaries" name="beneficiarios" type="radio"/>
+<input checked="" class="hidden peer/no" id="no-beneficiaries" name="beneficiarios" type="radio"/>
+<label class="px-5 py-1.5 rounded text-xs font-extrabold cursor-pointer transition-all peer-checked/si:bg-white peer-checked/si:shadow-sm peer-checked/si:text-primary text-on-surface-variant" for="has-beneficiaries">SI</label>
+<label class="px-5 py-1.5 rounded text-xs font-extrabold cursor-pointer transition-all peer-checked/no:bg-white peer-checked/no:shadow-sm peer-checked/no:text-primary text-on-surface-variant" for="no-beneficiaries">NO</label>
+</div>
+</div>
+<!-- Conditional Logic based on #has-beneficiaries peer status -->
+<div class="space-y-3 beneficiaries-content">
+<div class="grid grid-cols-2 gap-3">
+<input class="w-full bg-surface-container-low border-none rounded-lg p-3 text-sm focus:ring-1 focus:ring-primary" placeholder="RUT Carga" type="text"/>
+<input class="w-full bg-surface-container-low border-none rounded-lg p-3 text-sm focus:ring-1 focus:ring-primary" placeholder="Edad" type="number"/>
+</div>
+<button class="w-full py-3 rounded-lg border-2 border-dashed border-primary/20 text-primary font-bold text-sm flex items-center justify-center gap-2 active:bg-primary/5 transition-colors" type="button">
+<span class="material-symbols-outlined text-lg">add</span>
+                            Agregar Carga
+                        </button>
+</div>
+</div>
+<button class="w-full bg-primary text-on-primary font-extrabold py-5 rounded-lg shadow-lg active:scale-[0.98] transition-all text-lg mt-6" type="submit">
+                    Ver Planes Personalizados
+                </button>
+</form>
+</section>
+<!-- Quiénes Somos Section -->
+<section class="py-16 px-6 bg-white scroll-mt-20" id="quienes-somos">
+<div class="space-y-8">
+<div class="text-center">
+<h3 class="text-3xl font-extrabold text-on-surface font-headline tracking-tight">Quiénes Somos</h3>
+<div class="h-1.5 w-10 bg-primary mx-auto mt-4 rounded-full"></div>
+</div>
+<div class="rounded-lg overflow-hidden shadow-lg aspect-video">
+<img alt="Nuestro Equipo" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida/ADBb0uh88QNStGEGtNXgKr9QzNoxlwQAzpv07FIwlZYhEYCImtGuK_gLGlp8zSMSm94_4CuKATn266ivmDlDdpczcsFOvHxnvhu5m6NwyVXhWrjvpbNG9PHKsMVTZdc_fU7N2-3jYa4dpBHSxgogNJHd2ejIh6LGR7SOrazLJh0Nz44XIllS1sD_lLFOiGTRtUCBAGV5luuxRRwyaq9q6_VSk8mB7ub19DOA0rMLlMIr2mTml2kINzJmAG4zePvUbHbm4M_rVitb5dzw0vw"/>
+</div>
+<div class="space-y-4">
+<p class="text-on-surface-variant leading-relaxed text-base">Somos un equipo de asesores especializados en sistemas de salud, enfocados en entregar una asesoría gratuita, clara y personalizada, optimizando tu 7% de cotización obligatoria, mejorando tu cobertura y acceso a clínicas y centros médicos. Trabajamos con las principales Isapres del país, lo que nos permite comparar objetivamente y recomendar los planes que mejor se adaptan a tu realidad y la de tu familia.</p>
+</div>
+</div>
+</section>
+<!-- Promotional Section -->
+<section class="py-16 px-6 bg-primary-container/30">
+<div class="flex flex-col gap-8">
+<div class="rounded-lg overflow-hidden shadow-xl border-4 border-white">
+<img alt="Banner Cesantía" class="w-full h-auto" src="https://lh3.googleusercontent.com/aida/ADBb0ugoigTNtTxMQdHCR8d71_lm8veWCx9eRAvM0psROt6gmQOG0U0GeL245jyIqQvsR48MJVZ0dROpovgKPZE7ZkRVOSyjgbILPhyeIgd4nzlVQVjvPx7a4QOErQIJqb-hN2pMZoA7jPuCrrpKXfMQh0cnZVTdNRbpDZ0plFX3SZQBp4plRfP_PAqkAIeGPJ2YzRutZANnCihtHeG9odsirda5a0durjvyreaZv_rmumVyr2Mt5QD2TNytMAdURpHA-Nb6FArn_1zxtfI"/>
+</div>
+<div class="text-center px-2">
+<p class="text-xl font-bold text-on-primary-container leading-relaxed font-headline">
+                        Tomar una buena decisión en tu plan de salud puede ahorrarte miles de pesos al año y darte tranquilidad en momentos importantes.
+                    </p>
+<div class="h-1 w-12 bg-primary/40 mx-auto mt-6 rounded-full"></div>
+</div>
+</div>
+</section>
+<!-- Comparative Section: FONASA vs ISAPRE -->
+<section class="py-16 px-6 bg-white border-y border-surface-container scroll-mt-20" id="comparativa">
+<div class="text-center mb-10">
+<h3 class="text-3xl font-extrabold text-on-surface font-headline tracking-tight">Compara tu Sistema</h3>
+<p class="text-on-surface-variant text-sm mt-2 font-medium">¿Cuál se adapta mejor a tus necesidades?</p>
+<div class="h-1.5 w-10 bg-secondary mx-auto mt-4 rounded-full"></div>
+</div>
+<div class="space-y-6">
+<!-- FONASA Card -->
+<div class="bg-surface-container-low rounded-lg overflow-hidden border border-outline/10 shadow-sm">
+<div class="bg-[#e0f2f1] px-6 py-4 border-b border-[#b2dfdb]">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1;">account_balance</span>
+<h4 class="text-xl font-extrabold text-on-secondary-container font-headline uppercase tracking-wide">FONASA</h4>
+</div>
+</div>
+<div class="p-6 space-y-4">
+<ul class="space-y-3">
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-secondary text-lg mt-0.5">payments</span>
+<p class="text-sm text-on-surface-variant leading-snug">Pagas solo el <span class="font-bold text-on-surface">7% de tu renta</span></p>
+</li>
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-error text-lg mt-0.5">schedule</span>
+<p class="text-sm text-on-surface-variant leading-snug">Atención lenta</p>
+</li>
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-secondary text-lg mt-0.5">health_and_safety</span>
+<p class="text-sm text-on-surface-variant leading-snug">Cobertura mínima privada</p>
+</li>
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-secondary text-lg mt-0.5">domain</span>
+<p class="text-sm text-on-surface-variant leading-snug">Hospitales públicos</p>
+</li>
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-secondary text-lg mt-0.5">sentiment_neutral</span>
+<p class="text-sm text-on-surface-variant leading-snug">Baja comodidad</p>
+</li>
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-secondary text-lg mt-0.5">block</span>
+<p class="text-sm text-on-surface-variant leading-snug">Sin planes personalizados</p>
+</li>
+</ul>
+<div class="mt-4 pt-4 border-t border-outline/5">
+<span class="text-[10px] font-extrabold text-secondary uppercase tracking-[0.1em] font-label block mb-1">Perfil Sugerido</span>
+<p class="text-sm font-bold text-on-surface">Ideal para bajos recursos</p>
+</div>
+</div>
+</div>
+<!-- VS Separator -->
+<div class="flex items-center justify-center -my-2 relative z-10">
+<div class="bg-white px-4 py-1 border border-outline/20 rounded-full shadow-sm">
+<span class="font-black text-primary italic">VS</span>
+</div>
+</div>
+<!-- ISAPRE Card -->
+<div class="bg-primary-container/20 rounded-lg overflow-hidden border border-primary/10 shadow-md">
+<div class="bg-primary-container px-6 py-4 border-b border-primary/20">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">medical_services</span>
+<h4 class="text-xl font-extrabold text-on-primary-container font-headline uppercase tracking-wide">ISAPRE</h4>
+</div>
+</div>
+<div class="p-6 space-y-4">
+<ul class="space-y-3">
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-primary text-lg mt-0.5">group_add</span>
+<p class="text-sm text-on-surface-variant leading-snug">Pago por beneficiario</p>
+</li>
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-secondary text-lg mt-0.5">bolt</span>
+<p class="text-sm text-on-surface-variant leading-snug font-bold">Atención rápida</p>
+</li>
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-primary text-lg mt-0.5">verified_user</span>
+<p class="text-sm text-on-surface-variant leading-snug">Excelente cobertura privada</p>
+</li>
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-primary text-lg mt-0.5">clinical_notes</span>
+<p class="text-sm text-on-surface-variant leading-snug">Red amplia de prestadores</p>
+</li>
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-primary text-lg mt-0.5">star</span>
+<p class="text-sm text-on-surface-variant leading-snug">Excelencia hotelera</p>
+</li>
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-primary text-lg mt-0.5">tune</span>
+<p class="text-sm text-on-surface-variant leading-snug font-bold text-primary">Planes personalizados</p>
+</li>
+</ul>
+<div class="mt-4 pt-4 border-t border-primary/10">
+<span class="text-[10px] font-extrabold text-primary uppercase tracking-[0.1em] font-label block mb-1">Perfil Sugerido</span>
+<p class="text-sm font-bold text-on-surface">Ideal para ingresos medio-alto</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Why Choose Us Section -->
+<section class="py-16 px-6 bg-surface-container-low border-b border-surface-container">
+<div class="text-center mb-8">
+<h3 class="text-2xl font-extrabold text-on-surface font-headline tracking-tight">¿Por qué elegir nuestra asesoría?</h3>
+<div class="h-1.5 w-10 bg-primary mx-auto mt-4 rounded-full"></div>
+</div>
+<div class="rounded-lg overflow-hidden shadow-lg mb-8 border border-white">
+<img alt="Protección Familiar" class="w-full h-auto" src="https://lh3.googleusercontent.com/aida/ADBb0uh36SPzPZXnIVJrWfXLXMxQxM4OG1aqCy9m94m6Du_GYifNEJyIni7wNPNeNv-Nt-gRvXRg1Q8AaZzoKZk2zrau2TdoZLuDOfV2beP_LRnhnoZfpbca7Qzb-CRhH8VI011tHdszPArTuALnhDlcqn1zPxuM8Vuw0K5l2Q00CwJmIWP3haLKAAqYAcM3X3sURzaa5q6TLSKFa9hfSC48381XmlrhyeKwYEwWn-QlRNurTcmXu8UNh6y-Xj_gerDXdZbEJCwScJFrfg"/>
+</div>
+<div class="grid grid-cols-1 gap-3">
+<div class="flex items-center gap-4 bg-white p-4 rounded-lg shadow-sm border border-surface-container">
+<div class="w-10 h-10 bg-primary-container rounded-full flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-primary text-xl">volunteer_activism</span>
+</div>
+<p class="text-sm font-bold text-on-surface-variant leading-tight">Asesoría personalizada y gratuita</p>
+</div>
+<div class="flex items-center gap-4 bg-white p-4 rounded-lg shadow-sm border border-surface-container">
+<div class="w-10 h-10 bg-secondary-container rounded-full flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-secondary text-xl">analytics</span>
+</div>
+<p class="text-sm font-bold text-on-surface-variant leading-tight">Comparación de planes objetivamente</p>
+</div>
+<div class="flex items-center gap-4 bg-white p-4 rounded-lg shadow-sm border border-surface-container">
+<div class="w-10 h-10 bg-tertiary-container rounded-full flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-tertiary text-xl">lightbulb</span>
+</div>
+<p class="text-sm font-bold text-on-surface-variant leading-tight">Simplificación de la información</p>
+</div>
+<div class="flex items-center gap-4 bg-white p-4 rounded-lg shadow-sm border border-surface-container">
+<div class="w-10 h-10 bg-primary-container/40 rounded-full flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-primary text-xl">add_moderator</span>
+</div>
+<p class="text-sm font-bold text-on-surface-variant leading-tight">Identificación de beneficios adicionales</p>
+</div>
+<div class="flex items-center gap-4 bg-white p-4 rounded-lg shadow-sm border border-surface-container">
+<div class="w-10 h-10 bg-secondary-container/40 rounded-full flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-secondary text-xl">savings</span>
+</div>
+<p class="text-sm font-bold text-on-surface-variant leading-tight">Ahorrar tiempo y dinero</p>
+</div>
+<div class="flex items-center gap-4 bg-white p-4 rounded-lg shadow-sm border border-surface-container">
+<div class="w-10 h-10 bg-tertiary-container/40 rounded-full flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-tertiary text-xl">forum</span>
+</div>
+<p class="text-sm font-bold text-on-surface-variant leading-tight">Sentirte escuchado y acompañado</p>
+</div>
+<div class="flex items-center gap-4 bg-white p-4 rounded-lg shadow-sm border border-surface-container">
+<div class="w-10 h-10 bg-primary-container rounded-full flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-primary text-xl">bolt</span>
+</div>
+<p class="text-sm font-bold text-on-surface-variant leading-tight">Proceso sea rápido y eficiente</p>
+</div>
+</div>
+</section>
+<!-- Advisory Cards -->
+<section class="px-6 py-12 space-y-4">
+<div class="p-8 bg-tertiary-container rounded-lg flex flex-col justify-between aspect-[1.5/1]">
+<span class="material-symbols-outlined text-primary text-4xl" style="font-variation-settings: 'FILL' 1;">verified</span>
+<h4 class="text-xl font-extrabold text-on-tertiary-container leading-tight mt-4">Asesoría experta certificada por la Superintendencia.</h4>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<div class="p-6 bg-secondary-container rounded-lg flex flex-col justify-between aspect-square">
+<span class="material-symbols-outlined text-on-secondary-container text-3xl">speed</span>
+<p class="font-extrabold text-on-secondary-container text-sm">Resultados en 2 min</p>
+</div>
+<div class="p-6 bg-surface-container-high rounded-lg flex flex-col justify-between aspect-square">
+<span class="material-symbols-outlined text-primary text-3xl">shield_with_heart</span>
+<p class="font-extrabold text-on-surface text-sm">100% Seguro</p>
+</div>
+</div>
+</section>
+<!-- FAQ Section -->
+<section class="py-16 px-6 bg-white scroll-mt-20" id="faq">
+<div class="text-center mb-10">
+<h3 class="text-3xl font-extrabold text-on-surface font-headline tracking-tight">Preguntas Frecuentes</h3>
+<div class="h-1.5 w-10 bg-primary mx-auto mt-4 rounded-full"></div>
+</div>
+<div class="space-y-3">
+<details class="group bg-surface-container-low rounded-lg border border-surface-container overflow-hidden">
+<summary class="flex items-center justify-between p-4 cursor-pointer">
+<span class="text-sm font-bold text-on-surface pr-4">¿Cómo acceder al servicio?</span>
+<span class="material-symbols-outlined text-primary transition-transform group-open:rotate-180">expand_more</span>
+</summary>
+<div class="p-4 pt-0 text-sm text-on-surface-variant leading-relaxed">
+                        Es muy simple: 1. Completa el formulario de contacto. 2. Un asesor experto te contactará. 3. Recibirás las mejores ofertas comparadas. 4. Tú decides cuál es la mejor opción para ti.
+                    </div>
+</details>
+<details class="group bg-surface-container-low rounded-lg border border-surface-container overflow-hidden">
+<summary class="flex items-center justify-between p-4 cursor-pointer">
+<span class="text-sm font-bold text-on-surface pr-4">¿Debo cambiarme de Isapre si recibo la asesoría?</span>
+<span class="material-symbols-outlined text-primary transition-transform group-open:rotate-180">expand_more</span>
+</summary>
+<div class="p-4 pt-0 text-sm text-on-surface-variant leading-relaxed">
+                        No, no es obligatorio. Nuestra asesoría es para orientarte; si tu plan actual es el mejor disponible para tu perfil, te lo informaremos transparentemente.
+                    </div>
+</details>
+<details class="group bg-surface-container-low rounded-lg border border-surface-container overflow-hidden">
+<summary class="flex items-center justify-between p-4 cursor-pointer">
+<span class="text-sm font-bold text-on-surface pr-4">¿Es necesario entregar toda la información?</span>
+<span class="material-symbols-outlined text-primary transition-transform group-open:rotate-180">expand_more</span>
+</summary>
+<div class="p-4 pt-0 text-sm text-on-surface-variant leading-relaxed">
+                        Sí, para una personalización efectiva de tu plan, necesitamos datos precisos como renta, cargas y preferencias clínicas, asegurando que la recomendación sea 100% útil.
+                    </div>
+</details>
+<details class="group bg-surface-container-low rounded-lg border border-surface-container overflow-hidden">
+<summary class="flex items-center justify-between p-4 cursor-pointer">
+<span class="text-sm font-bold text-on-surface pr-4">¿Aún existen los planes compensados?</span>
+<span class="material-symbols-outlined text-primary transition-transform group-open:rotate-180">expand_more</span>
+</summary>
+<div class="p-4 pt-0 text-sm text-on-surface-variant leading-relaxed">
+                        Sí, ayudamos a optimizar tu 7% de cotización obligatoria para que obtengas la mejor cobertura posible sin pagar de más, aprovechando cada peso de tu cotización legal.
+                    </div>
+</details>
+<details class="group bg-surface-container-low rounded-lg border border-surface-container overflow-hidden">
+<summary class="flex items-center justify-between p-4 cursor-pointer">
+<span class="text-sm font-bold text-on-surface pr-4">¿Qué sucede con enfermedades preexistentes?</span>
+<span class="material-symbols-outlined text-primary transition-transform group-open:rotate-180">expand_more</span>
+</summary>
+<div class="p-4 pt-0 text-sm text-on-surface-variant leading-relaxed">
+                        Toda enfermedad preexistente debe ser declarada. Los criterios médicos de las Isapres determinan la aceptación, y nosotros te asesoramos sobre cómo realizar este proceso correctamente.
+                    </div>
+</details>
+<details class="group bg-surface-container-low rounded-lg border border-surface-container overflow-hidden">
+<summary class="flex items-center justify-between p-4 cursor-pointer">
+<span class="text-sm font-bold text-on-surface pr-4">¿Qué es el GES/AUGE?</span>
+<span class="material-symbols-outlined text-primary transition-transform group-open:rotate-180">expand_more</span>
+</summary>
+<div class="p-4 pt-0 text-sm text-on-surface-variant leading-relaxed">
+                        Es el sistema de Garantías Explícitas en Salud que asegura acceso, calidad, oportunidad y protección financiera para un listado específico de enfermedades frecuentes.
+                    </div>
+</details>
+<details class="group bg-surface-container-low rounded-lg border border-surface-container overflow-hidden">
+<summary class="flex items-center justify-between p-4 cursor-pointer">
+<span class="text-sm font-bold text-on-surface pr-4">¿Qué es el CAEC?</span>
+<span class="material-symbols-outlined text-primary transition-transform group-open:rotate-180">expand_more</span>
+</summary>
+<div class="p-4 pt-0 text-sm text-on-surface-variant leading-relaxed">
+                        Es la Cobertura Adicional para Enfermedades Catastróficas, un beneficio que permite financiar hasta el 100% de los gastos derivados de atenciones de alto costo una vez cumplido un deducible.
+                    </div>
+</details>
+</div>
+</section>
+<!-- Footer -->
+<footer class="w-full py-12 px-6 flex flex-col items-center text-center space-y-8 bg-surface-container-low">
+<div class="font-headline font-black text-primary text-2xl tracking-tighter">Editorial Assurance</div>
+<p class="font-inter text-sm text-on-surface-variant max-w-xs leading-relaxed">
+                Especialistas en asesoría de planes de salud Isapre en Chile. Comparamos por ti para encontrar la mejor cobertura.
+            </p>
+<div class="flex flex-col space-y-4">
+<a class="text-on-surface-variant/80 hover:text-primary transition-all text-xs font-bold uppercase tracking-widest" href="#">Privacy Policy</a>
+<a class="text-on-surface-variant/80 hover:text-primary transition-all text-xs font-bold uppercase tracking-widest" href="#">Terms of Service</a>
+<a class="text-on-surface-variant/80 hover:text-primary transition-all text-xs font-bold uppercase tracking-widest" href="#">Coverage Details</a>
+</div>
+<div class="pt-8 border-t border-surface-container-highest w-full">
+<p class="font-inter text-[10px] text-on-surface-variant/60 font-medium">© 2024 Editorial Assurance. All rights reserved.</p>
+</div>
+</footer>
+</main>
+<!-- Bottom Navigation -->
+<nav class="fixed bottom-0 left-0 w-full flex justify-around items-center px-4 pt-3 pb-8 bg-white/95 backdrop-blur-xl border-t border-surface-container-highest z-50">
+<a class="flex flex-col items-center justify-center text-primary group" href="#inicio">
+<div class="bg-primary-container px-5 py-1.5 rounded-full mb-1">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">home</span>
+</div>
+<span class="text-[9px] font-extrabold uppercase tracking-tighter">Inicio</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant group" href="#quienes-somos">
+<div class="px-5 py-1.5 rounded-full mb-1 group-active:bg-primary-container/30 transition-colors">
+<span class="material-symbols-outlined">groups</span>
+</div>
+<span class="text-[9px] font-extrabold uppercase tracking-tighter">Nosotros</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant group" href="#comparativa">
+<div class="px-5 py-1.5 rounded-full mb-1 group-active:bg-primary-container/30 transition-colors">
+<span class="material-symbols-outlined">compare_arrows</span>
+</div>
+<span class="text-[9px] font-extrabold uppercase tracking-tighter">Compara</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant group" href="#cotizar">
+<div class="px-5 py-1.5 rounded-full mb-1 group-active:bg-primary-container/30 transition-colors">
+<span class="material-symbols-outlined">assignment</span>
+</div>
+<span class="text-[9px] font-extrabold uppercase tracking-tighter">Cotizar</span>
+</a>
+</nav>
+</body></html>
