@@ -4,12 +4,9 @@ import keystatic from '@keystatic/astro';
 import node from '@astrojs/node';
 
 export default defineConfig({
-  // CAMBIO AQUÍ: Astro 6 prefiere 'static' (el adaptador maneja lo dinámico solo)
-  output: 'static', 
-  
+  // Importante: Astro 6 con adaptador de Node
   adapter: node({
     mode: 'standalone',
   }),
-  
   integrations: [tailwind(), keystatic()],
 });
