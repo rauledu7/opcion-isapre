@@ -20,6 +20,7 @@
     "@tailwindcss/postcss": "^4.2.4",
     "@tailwindcss/vite": "^4.2.4",
     "astro": "^6.1.9",
+    "picocolors": "^1.1.1",
     "postcss": "^8.5.10",
     "react": "^19.2.5",
     "react-dom": "^19.2.5",

@@ -1,16 +1,16 @@
-version: '3.8'
 services:
   isapre-landing:
     build: .
-    container_name: landing_app
+    container_name: opcion-isapre
     ports:
-      - "80:3000"
+      - "8080:8080"  # Cambiado para que coincida con el puerto de Astro/Cloud Run
     volumes:
-      # PERSISTENCIA DE DATOS:
-      # Vinculamos la carpeta de contenido (donde están los YAML)
       - ./src/content:/app/src/content
-      # Vinculamos la carpeta de imágenes (donde el cliente sube logos)
       - ./public/images:/app/public/images
+      # Añadimos el .env para que Keystatic tenga las llaves de GitHub en tu local
+      - ./.env:/app/.env 
     restart: always
     environment:
       - NODE_ENV=production
+      - PORT=8080
+      - HOST=0.0.0.0
