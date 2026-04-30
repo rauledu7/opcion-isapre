@@ -14,20 +14,8 @@ export default defineConfig({
   vite: {
     plugins: [tailwindcss()],
     ssr: {
-      // ESTA ES LA LISTA DEFINITIVA
-      noExternal: [
-        '@keystatic/astro', 
-        '@keystatic/core', 
-        '@astrojs/react', 
-        'react', 
-        'react-dom', 
-        '@emotion/styled', 
-        '@emotion/react'
-      ]
-    },
-    resolve: {
-      // Forzamos a que siempre use la versión de React que instalamos
-      dedupe: ['react', 'react-dom']
+      // Solo forzamos lo estrictamente necesario
+      noExternal: ['@keystatic/astro', '@keystatic/core', 'react-dom']
     }
   }
 });
