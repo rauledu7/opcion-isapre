@@ -8,15 +8,26 @@ export default defineConfig({
   adapter: node({ mode: 'standalone' }),
   output: 'server',
   integrations: [
-    // Pasamos una configuración vacía a react para forzar su inicialización
-    react({ include: ['**/*.{js,jsx,ts,tsx}'] }), 
+    react(), 
     keystatic()
   ],
   vite: {
     plugins: [tailwindcss()],
     ssr: {
-      // Forzamos a Vite a meter TODO dentro del archivo final
-      noExternal: true 
+      // ESTA ES LA LISTA DEFINITIVA
+      noExternal: [
+        '@keystatic/astro', 
+        '@keystatic/core', 
+        '@astrojs/react', 
+        'react', 
+        'react-dom', 
+        '@emotion/styled', 
+        '@emotion/react'
+      ]
+    },
+    resolve: {
+      // Forzamos a que siempre use la versión de React que instalamos
+      dedupe: ['react', 'react-dom']
     }
   }
 });
