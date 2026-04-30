@@ -1,7 +1,6 @@
 # Etapa 1: Build
 FROM node:22-slim AS build
 WORKDIR /app
-# Instalamos dependencias nativas necesarias
 RUN apt-get update && apt-get install -y python3 make g++ && rm -rf /var/lib/apt/lists/*
 COPY package*.json ./
 RUN npm install --legacy-peer-deps
@@ -12,14 +11,15 @@ RUN npm run build
 FROM node:22-slim AS runtime
 WORKDIR /app
 
-# Copiamos TODOS los archivos desde build para asegurar que los renderizadores estén
-COPY --from=build /app/package*.json ./
+# En modo standalone, Astro pone todo lo necesario en dist/server.
+# Sin embargo, para mayor seguridad con Keystatic, copiamos node_modules.
 COPY --from=build /app/node_modules ./node_modules
 COPY --from=build /app/dist ./dist
+COPY --from=build /app/package.json ./package.json
 
-# Copiamos el config (algunas integraciones lo leen en runtime)
-COPY --from=build /app/astro.config.mjs ./astro.config.mjs 2>/dev/null || true
-COPY --from=build /app/keystatic.config.ts ./keystatic.config.ts 2>/dev/null || true
+# No copiamos astro.config.mjs ya que no es necesario para ejecutar el bundle
+# Si Keystatic requiere archivos de contenido, los copiamos:
+COPY --from=build /app/src/content ./src/content 2>/dev/null || true
 
 ENV HOST=0.0.0.0
 ENV PORT=8080

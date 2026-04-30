@@ -8,16 +8,13 @@ export default defineConfig({
   adapter: node({
     mode: 'standalone',
   }),
-  integrations: [
-    react(), 
-    keystatic()
-  ],
-  output: 'server', // Asegúrate de que esto esté presente
+  output: 'server',
+  integrations: [react(), keystatic()],
   vite: {
     plugins: [tailwindcss()],
     ssr: {
-      // FORZAMOS a Vite a procesar estos paquetes para el servidor
-      noExternal: ['@keystatic/astro', '@astrojs/react', 'react', 'react-dom']
+      // Esto obliga a Astro a meter React dentro del bundle compilado
+      noExternal: ['@astrojs/react', 'react', 'react-dom', '@keystatic/astro']
     }
   },
 });
