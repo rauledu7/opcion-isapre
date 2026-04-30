@@ -5,14 +5,14 @@ import node from '@astrojs/node';
 import tailwindcss from '@tailwindcss/vite';
 
 export default defineConfig({
-  // 1. Adaptador para Cloud Run
   adapter: node({ mode: 'standalone' }),
   output: 'server',
-  
-  // 2. Integraciones (React SIEMPRE primero que Keystatic)
   integrations: [react(), keystatic()],
-  
   vite: {
     plugins: [tailwindcss()],
-  },
+    ssr: {
+      // ESTO ES CLAVE: Obliga a empaquetar React dentro del servidor
+      noExternal: ['@astrojs/react', '@keystatic/astro', 'react', 'react-dom']
+    }
+  }
 });
