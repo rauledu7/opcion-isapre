@@ -5,33 +5,14 @@ import node from '@astrojs/node';
 import tailwindcss from '@tailwindcss/vite';
 
 export default defineConfig({
-  adapter: node({
-    mode: 'standalone',
-  }),
+  // 1. Adaptador para Cloud Run
+  adapter: node({ mode: 'standalone' }),
   output: 'server',
-  // IMPORTANTE: Mueve react() al final de la lista de integraciones o 
-  // asegúrate de que esté configurado explícitamente para incluir archivos JS
-  integrations: [
-    keystatic(), 
-    react({
-      include: ['**/*.{js,jsx,ts,tsx}']
-    })
-  ],
+  
+  // 2. Integraciones (React SIEMPRE primero que Keystatic)
+  integrations: [react(), keystatic()],
+  
   vite: {
     plugins: [tailwindcss()],
-    ssr: {
-      // Forzamos a Vite a NO externalizar absolutamente nada relacionado con React o Keystatic
-      noExternal: [
-        '@astrojs/react', 
-        'react', 
-        'react-dom', 
-        '@keystatic/astro', 
-        '@keystatic/core',
-        'react/jsx-runtime'
-      ]
-    },
-    optimizeDeps: {
-      include: ['react', 'react-dom']
-    }
   },
 });

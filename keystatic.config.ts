@@ -1,13 +1,17 @@
 import { config, fields, singleton } from '@keystatic/core';
 
 export default config({
-  storage: {
-    kind: 'github',
-    repo: {
-      owner: 'rauledu7', // Ejemplo: 'juanperez'
-      name: 'opcion-isapre', // Ejemplo: 'isapre-landing'
-    },
-  },
+  storage: import.meta.env.PROD
+    ? {
+        kind: 'github',
+        repo: {
+          owner: 'rauledu7',
+          name: 'opcion-isapre',
+        },
+      }
+    : {
+        kind: 'local',
+      },
   singletons: {
     landing: singleton({
       label: 'Landing',
