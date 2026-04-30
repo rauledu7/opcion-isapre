@@ -11,19 +11,17 @@ RUN npm run build
 FROM node:22-slim AS runtime
 WORKDIR /app
 
-# En modo standalone, Astro pone todo lo necesario en dist/server.
-# Sin embargo, para mayor seguridad con Keystatic, copiamos node_modules.
+# Copiamos solo lo esencial que ya sabemos que existe
 COPY --from=build /app/node_modules ./node_modules
 COPY --from=build /app/dist ./dist
 COPY --from=build /app/package.json ./package.json
 
-# No copiamos astro.config.mjs ya que no es necesario para ejecutar el bundle
-# Si Keystatic requiere archivos de contenido, los copiamos:
-COPY --from=build /app/src/content ./src/content 2>/dev/null || true
-
+# Definimos variables de entorno
 ENV HOST=0.0.0.0
 ENV PORT=8080
 ENV NODE_ENV=production
 
 EXPOSE 8080
+
+# Ejecutamos el servidor
 CMD ["node", "./dist/server/entry.mjs"]
