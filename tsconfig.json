@@ -1,9 +1,14 @@
 {
   "extends": "astro/tsconfigs/strict",
   "compilerOptions": {
+    "target": "ESNext",
+    "module": "ESNext",
+    "moduleResolution": "bundler", // <--- Esto quita el error de @keystatic/core
+    "jsx": "react-jsx",            // Necesario para que React 19 se entienda con TS
     "types": ["node"],
-    "moduleResolution": "node",
-    "allowJs": true
+    "allowJs": true,
+    "noEmit": true,
+    "isolatedModules": true
   },
   "include": [".astro/types.d.ts", "**/*"],
   "exclude": ["dist"]

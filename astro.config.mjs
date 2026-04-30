@@ -7,12 +7,16 @@ import tailwindcss from '@tailwindcss/vite';
 export default defineConfig({
   adapter: node({ mode: 'standalone' }),
   output: 'server',
-  integrations: [react(), keystatic()],
+  integrations: [
+    // Pasamos una configuración vacía a react para forzar su inicialización
+    react({ include: ['**/*.{js,jsx,ts,tsx}'] }), 
+    keystatic()
+  ],
   vite: {
     plugins: [tailwindcss()],
     ssr: {
-      // ESTO ES CLAVE: Obliga a empaquetar React dentro del servidor
-      noExternal: ['@astrojs/react', '@keystatic/astro', 'react', 'react-dom']
+      // Forzamos a Vite a meter TODO dentro del archivo final
+      noExternal: true 
     }
   }
 });
