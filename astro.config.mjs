@@ -1,21 +1,17 @@
+// astro.config.mjs
 import { defineConfig } from 'astro/config';
 import react from '@astrojs/react';
 import keystatic from '@keystatic/astro';
 import node from '@astrojs/node';
-import tailwindcss from '@tailwindcss/vite';
 
 export default defineConfig({
   adapter: node({ mode: 'standalone' }),
   output: 'server',
-  integrations: [
-    react(), 
-    keystatic()
-  ],
+  integrations: [react(), keystatic()], // React antes que Keystatic
   vite: {
-    plugins: [tailwindcss()],
     ssr: {
-      // Solo forzamos lo estrictamente necesario
-      noExternal: ['@keystatic/astro', '@keystatic/core', 'react-dom']
+      // ESTO OBLIGA A ASTRO A INCLUIR REACT EN EL SERVER BUNDLE
+      noExternal: ['@keystatic/astro', '@keystatic/core', 'react', 'react-dom', '@astrojs/react']
     }
   }
 });
