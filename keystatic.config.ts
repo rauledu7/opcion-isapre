@@ -1,13 +1,20 @@
 import { config, fields, singleton } from '@keystatic/core';
 
+// Detectamos si estamos en producción (Cloud Run) o local
+const isProd = process.env.NODE_ENV === 'production';
+
 export default config({
-  storage: {
-    kind: 'github',
-    repo: {
-      owner: 'rauledu7', // Ejemplo: 'juanperez'
-      name: 'opcion-isapre', // Ejemplo: 'isapre-landing'
-    },
-  },
+  storage: isProd
+    ? {
+        kind: 'github',
+        repo: {
+          owner: 'rauledu7',
+          name: 'opcion-isapre',
+        },
+      }
+    : {
+        kind: 'local',
+      },
   singletons: {
     landing: singleton({
       label: 'Landing',
