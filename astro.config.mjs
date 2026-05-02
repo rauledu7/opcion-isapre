@@ -5,14 +5,33 @@ import node from '@astrojs/node';
 import tailwindcss from '@tailwindcss/vite';
 
 export default defineConfig({
-  adapter: node({ mode: 'standalone' }),
+  adapter: node({
+    mode: 'standalone',
+  }),
   output: 'server',
-  integrations: [react(), keystatic()],
+  // IMPORTANTE: Mueve react() al final de la lista de integraciones o 
+  // asegúrate de que esté configurado explícitamente para incluir archivos JS
+  integrations: [
+    keystatic(), 
+    react({
+      include: ['**/*.{js,jsx,ts,tsx}']
+    })
+  ],
   vite: {
     plugins: [tailwindcss()],
     ssr: {
-      // ESTO ES CLAVE: Obliga a empaquetar React dentro del servidor
-      noExternal: ['@astrojs/react', '@keystatic/astro', 'react', 'react-dom']
+      // Forzamos a Vite a NO externalizar absolutamente nada relacionado con React o Keystatic
+      noExternal: [
+        '@astrojs/react', 
+        'react', 
+        'react-dom', 
+        '@keystatic/astro', 
+        '@keystatic/core',
+        'react/jsx-runtime'
+      ]
+    },
+    optimizeDeps: {
+      include: ['react', 'react-dom']
     }
-  }
+  },
 });
