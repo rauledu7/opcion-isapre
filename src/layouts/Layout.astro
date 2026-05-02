@@ -1,48 +1,46 @@
 ---
 import '../styles/global.css';
-
 interface Props {
   title?: string;
 }
-
 const { title = 'Tu Opcion Isapre | Asesoria en Salud' } = Astro.props;
 ---
 
 <!doctype html>
 <html lang="es">
   <head>
-      <script is:inline>
-        !function(f,b,e,v,n,t,s)
-        {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-        n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-        if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-        n.queue=[];t=b.createElement(e);t.async=!0;
-        t.src=v;s=b.getElementsByTagName(e)[0];
-        s.parentNode.insertBefore(t,s)}(window, document,'script',
-        'https://connect.facebook.net/en_US/fbevents.js');
-        fbq('init', '1251034480526223');
-        fbq('track', 'PageView');
-      </script>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
+    <script is:inline>
+      !function(f,b,e,v,n,t,s)
+      {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+      n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+      if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+      n.queue=[];t=b.createElement(e);t.async=!0;
+      t.src=v;s=b.getElementsByTagName(e)[0];
+      s.parentNode.insertBefore(t,s)}(window, document,'script',
+      'https://connect.facebook.net/en_US/fbevents.js');
+      fbq('init', '1251034480526223');
+      fbq('track', 'PageView');
+    </script>
+
+    <script is:inline>
+      // Esto asegura que fbq exista antes de llamarlo
+      window.addEventListener('load', () => {
+        if (typeof window.fbq === 'function') {
+           window.fbq('track', 'CompleteRegistration');
+        }
+      });
+    </script>
+
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="icon" href="/favicon.ico" />
     <link
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&family=Inter:wght@400;500;600;700&display=swap"
     />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
-    />
-    <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
   </head>
   <body class="m-0 min-h-screen">
-    <script>
-      // @ts-ignore
-      window.fbq('track', 'CompleteRegistration');
-    </script>
     <slot />
   </body>
 </html>
