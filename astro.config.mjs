@@ -9,29 +9,28 @@ export default defineConfig({
     mode: 'standalone',
   }),
   output: 'server',
-  // IMPORTANTE: Mueve react() al final de la lista de integraciones o 
-  // asegúrate de que esté configurado explícitamente para incluir archivos JS
+  // CAMBIO 1: React SIEMPRE debe ir antes que Keystatic
   integrations: [
-    keystatic(), 
     react({
-      include: ['**/*.{js,jsx,ts,tsx}']
-    })
+      include: ['**/*.{js,jsx,ts,tsx}'],
+    }), 
+    keystatic()
   ],
   vite: {
     plugins: [tailwindcss()],
     ssr: {
-      // Forzamos a Vite a NO externalizar absolutamente nada relacionado con React o Keystatic
+      // CAMBIO 2: Añadimos Emotion, que es lo que usa Keystatic para los iconos
       noExternal: [
         '@astrojs/react', 
         'react', 
         'react-dom', 
         '@keystatic/astro', 
         '@keystatic/core',
-        'react/jsx-runtime'
+        'react/jsx-runtime',
+        '@emotion/styled',
+        '@emotion/react'
       ]
     },
-    optimizeDeps: {
-      include: ['react', 'react-dom']
-    }
+    // CAMBIO 3: Eliminamos optimizeDeps (es para el cliente, no ayuda con el error 500 del servidor)
   },
 });
