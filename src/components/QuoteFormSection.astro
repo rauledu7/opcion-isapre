@@ -163,11 +163,18 @@ const { quote } = Astro.props;
         form.reset();
         chargesFields?.classList.add('hidden');
       } else {
-        throw new Error('Error en el servidor');
+        // 2. Si no es OK, lanzamos el mensaje que viene en el JSON del backend
+        // Si result.message es un array (Nest lo hace a veces con validaciones), lo unimos con espacios.
+        const errorMessage = Array.isArray(result.message) 
+          ? result.message.join(', ') 
+          : result.message || 'Error desconocido en el servidor';
+          
+        throw new Error(errorMessage);
       }
     } catch (error) {
+      // 3. Ahora el catch recibirá el mensaje específico: "El correo leonor@gmail.com..."
       alert(error.message);
-      console.error(error);
+      console.error('Error capturado:', error);
     } finally {
       if(submitBtn) submitBtn.disabled = false;
       if(btnText) btnText.innerText = submitTextOriginal;
