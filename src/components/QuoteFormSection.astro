@@ -158,26 +158,30 @@ const { quote } = Astro.props;
         body: JSON.stringify(data),
       });
 
+      // 1. Leemos el JSON inmediatamente
+      const result = await response.json();
+
       if (response.ok) {
         alert('¡Cotización enviada con éxito!');
         form.reset();
         chargesFields?.classList.add('hidden');
       } else {
-        // 2. Si no es OK, lanzamos el mensaje que viene en el JSON del backend
-        // Si result.message es un array (Nest lo hace a veces con validaciones), lo unimos con espacios.
-        const errorMessage = Array.isArray(result.message) 
+        // 2. Si hay error, extraemos el mensaje del JSON que ya leímos
+        const msg = Array.isArray(result.message) 
           ? result.message.join(', ') 
-          : result.message || 'Error desconocido en el servidor';
-          
-        throw new Error(errorMessage);
+          : (result.message || 'Error en el servidor');
+        
+        // 3. Lanzamos el error con ese mensaje específico
+        throw new Error(msg);
       }
-    } catch (error) {
-      // 3. Ahora el catch recibirá el mensaje específico: "El correo leonor@gmail.com..."
+      } catch (error) {
+      // 4. El catch ahora solo se encarga de mostrar el mensaje del Error lanzado arriba
+      // o errores de red (como si el servidor está caído)
       alert(error.message);
-      console.error('Error capturado:', error);
-    } finally {
+      console.error('Detalle del error:', error);
+      } finally {
       if(submitBtn) submitBtn.disabled = false;
       if(btnText) btnText.innerText = submitTextOriginal;
-    }
+      }
   });
 </script>
