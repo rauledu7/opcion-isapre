@@ -45,5 +45,14 @@ const { title = 'Tu Opcion Isapre | Asesoria en Salud' } = Astro.props;
   </head>
   <body class="m-0 min-h-screen">
     <slot />
+    <a
+      href="https://wa.me/56975522163?text=Hola,%20vengo%20del%20sitio%20web.%20Necesito%20asesoría."
+      class="whatsapp-float"
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label="Contactar por WhatsApp"
+    >
+      <span class="material-symbols-outlined">chat</span>
+    </a>
   </body>
 </html>
